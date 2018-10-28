@@ -19,8 +19,8 @@ public abstract class TetrisScene {
 	 * Gruppo principale legato alla scena dove verrano inseriti
 	 * tutti i nodi che rappresenteranno la grafica. 
 	 */
-	protected Group ROOT = new Group();
-	
+	protected Group ROOT = new Group();	
+
 	/**
 	 * Il metodo init corrisponde a tutte le azioni che vanno compiute una
 	 * volta sola prima di iniziare il loop.
@@ -41,3 +41,11 @@ public abstract class TetrisScene {
 	}
 	
 }
+
+/**
+ * OSSERVAZIONI:
+ * 
+ * Per implementare la gestione dei tasti / mouse consultare la seguente risorsa:
+ * https://docs.oracle.com/javase/8/javafx/events-tutorial/handlers.htm
+ * 
+ */

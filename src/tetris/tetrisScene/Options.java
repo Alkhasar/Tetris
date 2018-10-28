@@ -14,7 +14,7 @@ import tetris.main.Tetris;
  * @author Franco
  *
  */
-public class Gioco extends TetrisScene {
+public class Options extends TetrisScene {
 	
 	/**
 	 * Unica istanza del singleton
@@ -24,7 +24,7 @@ public class Gioco extends TetrisScene {
 	/**
 	 * Costruttore privato del menu, verrà eseguito uno volta sola.
 	 */
-	private Gioco() {	}
+	private Options() {	}
 
 	/**
 	 * 
@@ -32,7 +32,7 @@ public class Gioco extends TetrisScene {
 	 */
 	public static TetrisScene getInstance() {
 		if(INSTANCE == null) {
-			INSTANCE = new Gioco();
+			INSTANCE = new Options();
 		}
 		System.out.println(INSTANCE);
 		return INSTANCE;
@@ -44,7 +44,7 @@ public class Gioco extends TetrisScene {
 	@Override
 	public void init() {
 		Tetris.setScene(ROOT);
-		System.out.println("EUREKA GIOCO FUNZIONA!!");
+		System.out.println("EUREKA OPZIONI FUNZIONA!!");
 
 	}
 
@@ -53,7 +53,7 @@ public class Gioco extends TetrisScene {
 	 */
 	@Override
 	public void loop() {
-		System.out.println("EUREKA SIAMO NEL LOOP DI GIOCO!!");
+		System.out.println("EUREKA SIAMO NEL LOOP DI OPZIONI!!");
 	}
 
 }

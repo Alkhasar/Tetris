@@ -13,8 +13,8 @@ import javafx.animation.AnimationTimer;
 // Same Package import
 import tetris.tetrisScene.TetrisScene;
 import tetris.tetrisScene.Menu;
-import tetris.tetrisScene.Opzioni;
-import tetris.tetrisScene.Gioco;
+import tetris.tetrisScene.Options;
+import tetris.tetrisScene.Game;
 import tetris.tetrisScene.LeaderBoard;
 
 /**
@@ -56,8 +56,8 @@ public class SceneHandler {
 	 */
 	private SceneHandler() {
 		this.scenes.put("Menu", Menu.getInstance());
-		this.scenes.put("Opzioni", Opzioni.getInstance());
-		this.scenes.put("Gioco", Gioco.getInstance());
+		this.scenes.put("Opzioni", Options.getInstance());
+		this.scenes.put("Gioco", Game.getInstance());
 		this.scenes.put("LeaderBoard", LeaderBoard.getInstance());
 	}
 	
