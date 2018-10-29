@@ -3,15 +3,18 @@
  * 
  * Classe che si occupa di tenere traccia di una immagine.
  */
-package tetris.resourceLoader;
+package tetris.resources;
 
 // Java Imports
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+
+//Same Package imports
+import tetris.resources.Resource;
+
 
 /**
  * @author Franco

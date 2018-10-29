@@ -8,6 +8,8 @@ package tetris.tetrisScene;
 // Java Imports
 import javafx.scene.Group;
 import javafx.scene.Scene;
+
+// Project imports
 import tetris.main.Tetris;
 
 /**

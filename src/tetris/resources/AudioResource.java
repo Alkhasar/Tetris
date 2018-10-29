@@ -3,11 +3,15 @@
  * 
  * Classe che si occupa di tenere in memoria una risorsa audio.
  */
-package tetris.resourceLoader;
+package tetris.resources;
 
 // Java Imports
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+
+//Same Package imports
+import tetris.resources.Resource;
+
 
 /**
  * @author Franco

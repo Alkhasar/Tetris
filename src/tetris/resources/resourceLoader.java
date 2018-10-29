@@ -4,11 +4,14 @@
  * Classe responsabile del caricamento e dell'imagazinamento delle risorse,
  * tale classe è un singleton.
  */
-package tetris.resourceLoader;
+package tetris.resources;
 
 // Java imports
 import java.util.List;
 import java.util.Hashtable;
+
+//Same Package imports
+import tetris.resources.Resource;
 
 /**
  * @author Franco

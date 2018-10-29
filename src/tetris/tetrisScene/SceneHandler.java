@@ -10,7 +10,7 @@ package tetris.tetrisScene;
 import java.util.Hashtable;
 import javafx.animation.AnimationTimer;
 
-// Same Package import
+// Same Package imports
 import tetris.tetrisScene.TetrisScene;
 import tetris.tetrisScene.Menu;
 import tetris.tetrisScene.Options;

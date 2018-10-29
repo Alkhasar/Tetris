@@ -4,7 +4,7 @@
  *  Questa classe è la risorsa base, tiene solo traccia del file da
  *  caricare in memoria.
  */
-package tetris.resourceLoader;
+package tetris.resources;
 
 // Java Imports
 import java.io.File;
