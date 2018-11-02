@@ -7,13 +7,14 @@
  */
 package tetris.main;
 
+
 //Java Imports
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import tetris.resources.ResourceLoader;
 //Project Imports
 import tetris.tetrisScene.SceneHandler;
 import tetris.tetrisScene.TetrisScene;
@@ -24,12 +25,33 @@ import tetris.tetrisScene.TetrisScene;
  */
 public class Tetris extends Application {
 	
-	// Public Parameters
-	
 	// Private Parameters
+	
+	/**
+	 * Il primaryStage è la finestra che viene creata su windows/linux.
+	 */
 	private static Stage PRIMARYSTAGE;
+	
+	/**
+	 * La Main scene è la scena che viene attacata alla finestra.
+	 * NB: Il fatto che si chiami "scene" può creare confusione con lo
+	 * "sceneHandler" => Sono due cose totalmente differenti.
+	 * Lo sceneHandler si occupa di cambiare il nodo principiale (ROOT) alla
+	 * scena corrente, inoltre ogni schermata es. "Menu" è denominta una scena.
+	 * Attenzione a non confondere.
+	 */
 	private static Scene MAINSCENE;
+	
+	/**
+	 * Gestore di scene, da non confondere con la scena principale.
+	 */
 	private static SceneHandler SCENEHANDLER;
+	
+	/**
+	 * Caricatore di risorse, singleton che si occupa di caricare le risorse grafiche/audio
+	 * in memoria.
+	 */
+	private static ResourceLoader RESOURCELOADER = ResourceLoader.getInstance();
 	
 	/**
 	 * Metodo main, se lanciato da console prende gli argomenti e li inserisce in un array di stringhe.
@@ -49,11 +71,27 @@ public class Tetris extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		PRIMARYSTAGE = primaryStage;
-		SCENEHANDLER = SceneHandler.getInstance();
 		
-		// Setting the scene to allow instantiation
-		// of main scene
-		MAINSCENE = new Scene(SCENEHANDLER.getScene("Menu").getRoot());
+		// Imposta le dimensioni della finestra
+		PRIMARYSTAGE.setWidth(700);
+		PRIMARYSTAGE.setHeight(700);
+		
+		// Caricamento delle risorse
+		RESOURCELOADER.loadResources();
+		
+		// Gestore di scene
+		SCENEHANDLER = SceneHandler.getInstance();
+
+		
+		// Impostazione della MAINSCENE per permettere di
+		// legarla allo stage principale.
+		MAINSCENE = new Scene(SCENEHANDLER.getScene("Menu").getRoot());	
+		SCENEHANDLER.setScene("Menu");
+		
+		// Aggiunge la MAINSCENE al primarystage da questo punto la gestione
+		// di quale nodo "ROOT" deve essere attacato alla mainscene è compito delle
+		// scene stesse.
+		PRIMARYSTAGE.setScene(MAINSCENE);
 	}
 
 	/**
@@ -75,7 +113,7 @@ public class Tetris extends Application {
 	}
 	
 	/**
-	 * Returns the scene handler singleton.
+	 * Restituisce il signletono gestore di scene
 	 * 
 	 * @return the scenehandler
 	 */
@@ -83,4 +121,24 @@ public class Tetris extends Application {
 		return SCENEHANDLER;
 	}
 
+	/**
+	 * Restituisce il gestore di risorse.
+	 * 
+	 * @return il caricatore di risorse
+	 */
+	public static ResourceLoader getResourceLoader() {
+		return RESOURCELOADER;
+	}
+	
+	/**
+	 * Restituisce lo stage primario.
+	 * 
+	 * @return
+	 */
+	public static Stage getPrimaryStage() {
+		return PRIMARYSTAGE;
+	}
+
+	
+	
 }

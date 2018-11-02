@@ -22,11 +22,20 @@ import tetris.resources.Resource;
  */
 public class ImageResource extends Resource {
 	
+	/**
+	 * Larghezza ed altezza dell'immagine (la larghezza di un'immagine non varierà nel tempo
+	 * pertato la dichiariamo final.
+	 */
 	private final int width;
 	private final int height;
+	
+	/**
+	 * Conservo in memoria l'immagine, il canvas sulla quale viene disegnata e il graphicContext.
+	 * Assumo che l'immagine e il canvas non vengono modificati, mentre il GC sì.
+	 */
 	protected final Image img;
 	protected final Canvas imgCanvas;
-	protected GraphicsContext imgGc;
+	protected  GraphicsContext imgGc;
 	
 	/**
 	 * Questa classe è responsabile del mantenimento in memoria di una singola immagine,
@@ -47,12 +56,18 @@ public class ImageResource extends Resource {
 		
 		// Inizializzazione dell'input stream
 		img = new Image(new FileInputStream(this.file));
+		
+		// Creazione del canvas sul quale viene disegnata l'img
 		imgCanvas = new Canvas(this.width, this.height);
 		imgGc = imgCanvas.getGraphicsContext2D();
+		
+		// Disegno dell'immagine sul canvas
 		imgGc.drawImage(this.img, 0, 0);
 	}
 
 	/**
+	 * Getter per la larghezza dell'immagine caricata.
+	 * 
 	 * @return la larghezza
 	 */
 	public int getWidth() {
@@ -60,6 +75,8 @@ public class ImageResource extends Resource {
 	}
 
 	/**
+	 * Getter per l'altezza dell immagine caricata.
+	 * 
 	 * @return l'altezza
 	 */
 	public int getHeight() {
@@ -71,7 +88,7 @@ public class ImageResource extends Resource {
 	 * 
 	 * @return il canvas su cui è disegnata l'img
 	 */
-	public Canvas getResource() {
+	public Canvas getImageCanvas() {
 		return this.imgCanvas;
 	}
 	

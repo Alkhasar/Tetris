@@ -7,6 +7,9 @@
  */
 package tetris.entities;
 
+import javafx.scene.Group;
+import javafx.scene.canvas.Canvas;
+import tetris.resources.ImageResource;
 // Project Imports
 import tetris.resources.Resource;
 
@@ -59,16 +62,12 @@ public abstract class Sprite {
 		this.texture = texture;
 	}
 
-	/**
-	 * Il metodo da implementare deve disegnare lo sprite sul piano in cui è 
-	 * stato creato.
-	 */
-	abstract void draw();
 	
 	/**
-	 * Il metodo update va eseguito ad ogni ciclo.
+	 * Il metodo update va eseguito ad ogni ciclo e deve essere
+	 * sviluppato per ogni sottoclasse si Sprite.
 	 */
-	abstract void update();
+	abstract public void update();
 	
 	/**
 	 * Restituisce la coordinata x dello sprite.
@@ -85,6 +84,8 @@ public abstract class Sprite {
 	 * @param la coordinata x da settare
 	 */
 	public void setX(int x) {
+		ImageResource temp = (ImageResource) this.texture;
+		temp.getImageCanvas().setLayoutX(x);
 		this.x = x;
 	}
 
@@ -103,6 +104,8 @@ public abstract class Sprite {
 	 * @param la coordinata y da settare.
 	 */
 	public void setY(int y) {
+		ImageResource temp = (ImageResource) this.texture;
+		temp.getImageCanvas().setLayoutY(y);
 		this.y = y;
 	}
 
@@ -114,6 +117,5 @@ public abstract class Sprite {
 	public Resource getTexture() {
 		return texture;
 	}
-	
 	
 }

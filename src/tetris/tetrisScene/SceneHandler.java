@@ -1,5 +1,6 @@
 /**
  * Classe StageHandler
+ * 
  * Questa classe è responsibile di gestire e conservare le varie schermate.
  * E' sviluppata seguendo la logica del Singleton, ovvero una classe della quale
  * può esistere una sola istanza.
@@ -47,7 +48,7 @@ public class SceneHandler {
 		
 		@Override
 		public void handle(long now) {
-			scenes.get(getCurrentSceneName()).loop();
+			scenes.get(getCurrentSceneName()).loop(now);
 		}
 	};;
 	

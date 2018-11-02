@@ -1,5 +1,6 @@
 /**
  * Classe Menu
+ * 
  * Questa classe rappresenta il menu, ovvero la scena di default
  * che deve essere eseguita anche in caso di errori.
  */
@@ -54,7 +55,7 @@ public class LeaderBoard extends TetrisScene {
 	 * Codice che verrà eseguito continuamente
 	 */
 	@Override
-	public void loop() {
+	public void loop(long now) {
 		System.out.println("EUREKA SIAMO NEL LOOP DI LEADERBOARD!!");
 	}
 

@@ -88,4 +88,20 @@ public class SpriteSheetResource extends Resource {
 	public Canvas getFrame(int index) {
 		return frames.get(index);
 	}
+
+	/**
+	 * @return the sizes
+	 */
+	public int[] getSizes() {
+		return sizes;
+	}
+
+	/**
+	 * @return the numberOfImg
+	 */
+	public int getNumberOfImg() {
+		return numberOfImg;
+	}
+	
+	
 }
