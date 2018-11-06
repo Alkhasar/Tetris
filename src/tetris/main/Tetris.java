@@ -108,8 +108,15 @@ public class Tetris extends Application {
 	 * Setter per la scena corrente. Con questo metodo si puo cambiare
 	 * quale scena deve essere renderizzata.
 	 */
-	public static void setScene(Group root){
-		MAINSCENE.setRoot(root);
+	public static void setScene(String name){
+		// Imposta il root node corrente
+		MAINSCENE.setRoot(SCENEHANDLER.getScene(name).getRoot());
+		
+		// Cambia la scena
+		SCENEHANDLER.setScene(name);
+		
+		// Cerca di mostrare tutto ciò che è visibile
+		PRIMARYSTAGE.show();
 	}
 	
 	/**

@@ -46,7 +46,6 @@ public class LeaderBoard extends TetrisScene {
 	 */
 	@Override
 	public void init() {
-		Tetris.setScene(ROOT);
 		System.out.println("EUREKA LEADERBOARD FUNZIONA!!");
 
 	}

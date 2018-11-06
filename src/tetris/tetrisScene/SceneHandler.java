@@ -57,8 +57,8 @@ public class SceneHandler {
 	 */
 	private SceneHandler() {
 		this.scenes.put("Menu", Menu.getInstance());
-		this.scenes.put("Opzioni", Options.getInstance());
-		this.scenes.put("Gioco", Game.getInstance());
+		this.scenes.put("Options", Options.getInstance());
+		this.scenes.put("Game", Game.getInstance());
 		this.scenes.put("LeaderBoard", LeaderBoard.getInstance());
 	}
 	

@@ -82,10 +82,7 @@ public class Menu extends TetrisScene {
 	 * Codice iniziale per la preparazione del menu.
 	 */
 	@Override
-	public void init() {
-		// Imposto la scena corrente come root
-		Tetris.setScene(ROOT);
-		
+	public void init() {		
 		// Aggiunge ogni sprite al ROOT node																			// RIGA ESEMPIO														
 		for (Sprite sprite : sprites) {																					// RIGA ESEMPIO
 			ROOT.getChildren().add((Canvas) ((ImageResource) sprite.getTexture()).getImageCanvas());					// RIGA ESEMPIO
