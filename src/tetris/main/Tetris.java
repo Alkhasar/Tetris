@@ -13,6 +13,7 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import tetris.resources.ResourceLoader;
 //Project Imports
@@ -74,7 +75,7 @@ public class Tetris extends Application {
 		
 		// Imposta le dimensioni della finestra
 		PRIMARYSTAGE.setWidth(700);
-		PRIMARYSTAGE.setHeight(700);
+		PRIMARYSTAGE.setHeight(737);
 		
 		// Caricamento delle risorse
 		RESOURCELOADER.loadResources();
@@ -85,8 +86,11 @@ public class Tetris extends Application {
 		
 		// Impostazione della MAINSCENE per permettere di
 		// legarla allo stage principale.
-		MAINSCENE = new Scene(SCENEHANDLER.getScene("Menu").getRoot());	
-		SCENEHANDLER.setScene("Menu");
+		MAINSCENE = new Scene(SCENEHANDLER.getScene("Game").getRoot(), Color.rgb(36, 38, 47));	
+		SCENEHANDLER.setScene("Game");
+		
+		// Aggiunta del gestore eventi per tasti
+		MAINSCENE.setOnKeyPressed(SCENEHANDLER.getScene("Game"));
 		
 		// Aggiunge la MAINSCENE al primarystage da questo punto la gestione
 		// di quale nodo "ROOT" deve essere attacato alla mainscene è compito delle
@@ -109,11 +113,18 @@ public class Tetris extends Application {
 	 * quale scena deve essere renderizzata.
 	 */
 	public static void setScene(String name){
+		
+		// Ultimo ciclo
+		SCENEHANDLER.getCurrentScene().exit();
+		
 		// Imposta il root node corrente
 		MAINSCENE.setRoot(SCENEHANDLER.getScene(name).getRoot());
 		
 		// Cambia la scena
 		SCENEHANDLER.setScene(name);
+		
+		// Aggiunta del gestore eventi per tasti
+		MAINSCENE.setOnKeyPressed(SCENEHANDLER.getScene(name));
 		
 		// Cerca di mostrare tutto ciò che è visibile
 		PRIMARYSTAGE.show();
@@ -146,6 +157,12 @@ public class Tetris extends Application {
 		return PRIMARYSTAGE;
 	}
 
+	/**
+	 * Restituisce la scena corrente
+	 */
+	public static TetrisScene getCurrentScene() {
+		return SCENEHANDLER.getCurrentScene();
+	}
 	
 	
 }

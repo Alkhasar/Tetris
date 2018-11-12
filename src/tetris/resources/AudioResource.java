@@ -31,6 +31,11 @@ public class AudioResource extends Resource {
 	private final Media sound;
 	
 	/**
+	 * Rate corrente
+	 */
+	private double currentRate = 1.0;
+	
+	/**
 	 * Inizialliza la risorsa e la carica nella variabile sound.
 	 * 
 	 * @param path
@@ -96,5 +101,20 @@ public class AudioResource extends Resource {
 	        	// Assegna un runnable vuoto.
 	        }
 	    }); 
+	}
+	
+	/**
+	 * Rende il brano più rapido
+	 */
+	public void setFeedRate(double d) {
+		if(d>8) {
+			d=8;
+		}
+		currentRate = d;
+		mediaPlayer.setRate(d);
+	}
+	
+	public double getCurrentrate() {
+		return currentRate;
 	}
 }

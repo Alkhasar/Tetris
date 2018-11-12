@@ -7,10 +7,8 @@
  */
 package tetris.entities;
 
-import javafx.scene.Group;
-import javafx.scene.canvas.Canvas;
-import tetris.resources.ImageResource;
 // Project Imports
+import tetris.resources.ImageResource;
 import tetris.resources.Resource;
 
 /**
@@ -62,7 +60,6 @@ public abstract class Sprite {
 		this.texture = texture;
 	}
 
-	
 	/**
 	 * Il metodo update va eseguito ad ogni ciclo e deve essere
 	 * sviluppato per ogni sottoclasse si Sprite.

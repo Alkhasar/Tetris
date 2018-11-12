@@ -7,10 +7,22 @@ package tetris.resources;
 
 // Java Imports
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
+
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
+import javafx.scene.paint.Color;
+import tetris.main.Tetris;
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * @author Franco Mostardi
@@ -80,15 +92,28 @@ public class SpriteSheetResource extends Resource {
 	}
 	
 	/**
-	 * Getter per i frame dello spritesheet
+	 * Getter per i frame dello spritesheet, il getter crea un nuovo canvas
+	 * sul quale disegna una nuova immagine per evitare problemi riguardanti
+	 * due oggetti che utilizzano la stessa immagine.
 	 * 
 	 * @param indice del frame
 	 * @return
 	 */
 	public Canvas getFrame(int index) {
-		return frames.get(index);
-	}
+		// Crea una copia dell' elementobase
+		SnapshotParameters params = new SnapshotParameters();
+		params.setFill(Color.RED);
+		WritableImage tmpImg = frames.get(index).snapshot(params, null);
+		
+		// Crea un nuovo canvas vi copia l'immagine del tetramino e lo restituisce
+		Canvas temp = new Canvas();
+		temp.setWidth(frames.get(index).getWidth());
+		temp.setHeight(frames.get(index).getHeight());
+		temp.getGraphicsContext2D().drawImage(tmpImg, 0, 0);
 
+		return temp;
+	}
+	
 	/**
 	 * @return the sizes
 	 */

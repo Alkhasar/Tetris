@@ -47,9 +47,19 @@ public class ResourceLoader {
 		
 		// Comando do usare in queste righe: paths.add(new String[]{"<Nome>", "<Percorso di una risorsa>", "<audio,img>", "<imgW>", "<imgH>"});
 		// Ripetere per ogni risorsa da caricare
-		this.paths.add(new String[]{"myImage", "./assets/img/sprites.png", "img", "224", "32"}); 								// RIGA ESEMPIO
-		this.paths.add(new String[]{"myAudio", "./assets/audio/Tetris.mp3", "audio", "32", "32"}); 								// RIGA ESEMPIO
-		this.paths.add(new String[]{"mySpriteSheet", "./assets/img/sprites.png", "spriteSheet", "32", "32", "7", "1", "7"}); 	// RIGA ESEMPIO
+
+		// Caricamento Audio
+		this.paths.add(new String[]{"myAudio", "./assets/audio/Tetris.mp3", "audio", "32", "32"}); 								
+		
+		// Caricamento immagini
+		this.paths.add(new String[]{"myWallpaper", "./assets/img/Game_Wallpaper.png","img","700","700"});
+		this.paths.add(new String[]{"myImage", "./assets/img/Base_Elements.png", "img", "224", "32"}); 
+		
+		// Caricamento spriteSheet
+		this.paths.add(new String[]{"mySpriteSheet", "./assets/img/Base_Elements.png", "spriteSheet", "32", "32", "7", "1", "7"}); 	
+		this.paths.add(new String[]{"myButton", "./assets/img/Button_menu.png", "spriteSheet", "150", "50", "2", "1", "2"});
+		this.paths.add(new String[]{"myButton2", "./assets/img/Button_punteggi.png", "spriteSheet", "150", "50", "2", "1", "2"});
+	
 	}
 	
 	/**

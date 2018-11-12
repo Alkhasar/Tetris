@@ -9,7 +9,7 @@ package tetris.tetrisScene;
 // Java Imports
 import javafx.scene.Group;
 import javafx.scene.Scene;
-
+import javafx.scene.input.KeyEvent;
 // Project Imports
 import tetris.main.Tetris;
 
@@ -37,7 +37,6 @@ public class LeaderBoard extends TetrisScene {
 		if(INSTANCE == null) {
 			INSTANCE = new LeaderBoard();
 		}
-		System.out.println(INSTANCE);
 		return INSTANCE;
 	}
 	
@@ -56,6 +55,15 @@ public class LeaderBoard extends TetrisScene {
 	@Override
 	public void loop(long now) {
 		System.out.println("EUREKA SIAMO NEL LOOP DI LEADERBOARD!!");
+	}
+
+	/* (non-Javadoc)
+	 * @see javafx.event.EventHandler#handle(javafx.event.Event)
+	 */
+	@Override
+	public void handle(KeyEvent event) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

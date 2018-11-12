@@ -6,10 +6,13 @@
 package tetris.tetrisScene;
 
 
+import javafx.event.EventHandler;
 // Java Imports
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
@@ -63,32 +66,13 @@ public class Menu extends TetrisScene {
 		};																					// RIGA ESEMPIO
 																							// RIGA ESEMPIO
 		// Aggiungo lo sprite all'arrayList													// RIGA ESEMPIO
-		sprites.add(test);																	// RIGA ESEMPIO
-	}
-
-	/**
-	 * 
-	 * @return unica istanza del menu.
-	 */
-	public static TetrisScene getInstance() {
-		if(INSTANCE == null) {
-			INSTANCE = new Menu();
-		}
-		System.out.println(INSTANCE);
-		return INSTANCE;
-	}
-	
-	/** 
-	 * Codice iniziale per la preparazione del menu.
-	 */
-	@Override
-	public void init() {		
+		sprites.add(test);	
+		
 		// Aggiunge ogni sprite al ROOT node																			// RIGA ESEMPIO														
 		for (Sprite sprite : sprites) {																					// RIGA ESEMPIO
 			ROOT.getChildren().add((Canvas) ((ImageResource) sprite.getTexture()).getImageCanvas());					// RIGA ESEMPIO
 		}																												// RIGA ESEMPIO
-																														// RIGA ESEMPIO
-		System.out.println("EUREKA MENU FUNZIONA!!");																	// RIGA ESEMPIO
+																														// RIGA ESEMPIO																// RIGA ESEMPIO
 		// Verifico che si riesca a caricare uno spriteSheet															// RIGA ESEMPIO
 		SpriteSheetResource tempe = (SpriteSheetResource) Tetris.getResourceLoader().getResource("mySpriteSheet");		// RIGA ESEMPIO
 		
@@ -100,15 +84,59 @@ public class Menu extends TetrisScene {
 			ROOT.getChildren().add(temp2);																				// RIGA ESEMPIO
 		}
 		
-		
+		ROOT.getChildren().get(3).addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
-		// Verifico il funzionamento dell'audio																			// RIGA ESEMPIO
-		AudioResource music = (AudioResource) Tetris.getResourceLoader().getResource("myAudio");						// RIGA ESEMPIO
-		music.loop();																									// RIGA ESEMPIO
-		music.play();																									// RIGA ESEMPIO
+			@Override
+			public void handle(MouseEvent event) {
+				Tetris.setScene("Game");
+				
+			}
+		});
 		
+		
+		ROOT.getChildren().get(2).addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+				double CurrentX = ROOT.getChildren().get(3).getLayoutX();
+				if (CurrentX> 700) {
+					ROOT.getChildren().get(3).setLayoutX(0);						
+				}
+				else {
+					ROOT.getChildren().get(3).setLayoutX(CurrentX+5);
+				}
+				
+				
+				
+			}
+		});
+		
+		
+	}
+
+	/**
+	 * 
+	 * @return unica istanza del menu.
+	 */
+	public static TetrisScene getInstance() {
+		if(INSTANCE == null) {
+			INSTANCE = new Menu();
+		}
+		return INSTANCE;
+	}
+	
+	/** 
+	 * Codice iniziale per la preparazione del menu.
+	 */
+	@Override
+	public void init() {		
 		// Cerca di mostrare tutto ciò che è visibile
 		Tetris.getPrimaryStage().show();
+		
+		// Verifico il funzionamento dell'audio																			// RIGA ESEMPIO
+//		AudioResource music = (AudioResource) Tetris.getResourceLoader().getResource("myAudio");						// RIGA ESEMPIO
+//		music.loop();																									// RIGA ESEMPIO
+//		music.play();					
 	}
 
 	/**
@@ -122,5 +150,14 @@ public class Menu extends TetrisScene {
 				sprite.update();					// RIGA ESEMPIO
 		}											// RIGA ESEMPIO
 	}												// RIGA ESEMPIO
+
+	/* (non-Javadoc)
+	 * @see javafx.event.EventHandler#handle(javafx.event.Event)
+	 */
+	@Override
+	public void handle(KeyEvent event) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

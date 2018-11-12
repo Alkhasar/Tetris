@@ -15,6 +15,7 @@ import javafx.animation.AnimationTimer;
 import tetris.tetrisScene.TetrisScene;
 import tetris.tetrisScene.Menu;
 import tetris.tetrisScene.Options;
+import tetris.main.Tetris;
 import tetris.tetrisScene.Game;
 import tetris.tetrisScene.LeaderBoard;
 
@@ -62,7 +63,7 @@ public class SceneHandler {
 		this.scenes.put("LeaderBoard", LeaderBoard.getInstance());
 	}
 	
-	private TetrisScene getCurrentScene() { 
+	public TetrisScene getCurrentScene() { 
 		return scenes.get(getCurrentSceneName());
 	}
 	
@@ -109,4 +110,5 @@ public class SceneHandler {
 	public TetrisScene getScene (String sceneName){
 		return scenes.get(sceneName);
 	}
+	
 }

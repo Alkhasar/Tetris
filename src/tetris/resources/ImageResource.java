@@ -64,6 +64,59 @@ public class ImageResource extends Resource {
 		// Disegno dell'immagine sul canvas
 		imgGc.drawImage(this.img, 0, 0);
 	}
+	
+	
+	/**
+	 * Costruttore nel caso l'immagine provenga da uno spriteSheet e
+	 * si voglia visualizzare solo un'immgaine
+	 * 
+	 * @param larghezza dell'immagine
+	 * @param altezza dell'immagine
+	 * @param spriteSheet corrispondente
+	 * @param indice dell'immagine
+	 */
+	public ImageResource(int width, int height, SpriteSheetResource spriteSheet, int index) {
+		// Costruttore di resourc
+		super(spriteSheet.path);
+		
+		// Assegnazione dei parametri iniziali
+		this.width = width;
+		this.height = height;
+		
+		// Impostazione dell'img to null poiche proviene da uno spritesheet
+		img = null;
+		
+		// Impostazioned del canvas corrente
+		imgCanvas = spriteSheet.getFrame(index);
+		// Impostazione del graphic context
+		imgGc = imgCanvas.getGraphicsContext2D();
+	}
+	
+	/**
+	 * Costruttore nel caso l'immagine sia gia salvata su un canvas
+	 * 
+	 * @param largehzza del canvas
+	 * @param altezza del canvas
+	 * @param il canvas
+	 */
+	public ImageResource(int width, int height, Canvas canvas) {
+		// Costruttore di resource
+		super(null);
+		
+		// Assegnazione dei parametri iniziali
+		this.width = width;
+		this.height = height;
+		
+		// Impostazione dell'img to null poiche proviene da uno spritesheet
+		img = null;
+				
+		// Impostazioned del canvas corrente
+		imgCanvas = canvas;
+		
+		// Impostazione del graphic context
+		imgGc = imgCanvas.getGraphicsContext2D();
+		
+	}
 
 	/**
 	 * Getter per la larghezza dell'immagine caricata.

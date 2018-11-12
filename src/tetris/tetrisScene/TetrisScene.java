@@ -7,14 +7,16 @@
  */
 package tetris.tetrisScene;
 
+import javafx.event.EventHandler;
 //Java Imports
 import javafx.scene.Group;
+import javafx.scene.input.KeyEvent;
 
 /**
  * @author Franco
  *
  */
-public abstract class TetrisScene {
+public abstract class TetrisScene implements EventHandler<KeyEvent> {
 	
 	/**
 	 * Gruppo principale legato alla scena dove verrano inseriti
@@ -33,6 +35,11 @@ public abstract class TetrisScene {
 	 * Il metodo loop deve essere eseguito almeno ogni 1000/fps ms.
 	 */
 	abstract void loop(long now);
+	
+	/**
+	 * Metodo chiamato ogni volta che si esce dalla scena
+	 */
+	public void exit() {};
 	
 	/**
 	 * Getter per ROOT, usabile al difuori del paccheto tetrisScene

@@ -20,6 +20,8 @@ public abstract class Resource {
 	 */
 	protected final File file;
 	
+	protected final String path;
+	
 	/**
 	 * Costruttore della Risorsa
 	 * 
@@ -27,5 +29,6 @@ public abstract class Resource {
 	 */
 	protected Resource(String path) {
 		file = new File(path);
+		this.path = path;
 	}
 }
