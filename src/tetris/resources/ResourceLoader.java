@@ -2,7 +2,7 @@
  * Classe ResourceLoader
  * 
  * Classe responsabile del caricamento e dell'imagazinamento delle risorse,
- * tale classe � un singleton.
+ * tale classe � un singleton.
  */
 package tetris.resources;
 
@@ -49,17 +49,27 @@ public class ResourceLoader {
 		// Ripetere per ogni risorsa da caricare
 
 		// Caricamento Audio
-		this.paths.add(new String[]{"myAudio", "./assets/audio/Tetris.mp3", "audio", "32", "32"}); 								
+		this.paths.add(new String[]{"myAudio", "./assets/audio/Tetris.wav", "audio", "32", "32"}); 								
 		
 		// Caricamento immagini
 		this.paths.add(new String[]{"myWallpaper", "./assets/img/Game_Wallpaper.png","img","700","700"});
-		this.paths.add(new String[]{"myImage", "./assets/img/Base_Elements.png", "img", "224", "32"}); 
+		this.paths.add(new String[]{"myImage", "./assets/img/Base_Elements.png", "img", "224", "32"});
+		this.paths.add(new String[]{"MenuWallpaper", "./assets/img/Menu_Wallpaper.png","img","700","700"});
+		this.paths.add(new String[]{"OptionsWallpaper", "./assets/img/Options_Wallpaper.png","img","700","700"});
+		//this.paths.add(new String[]{"Tacca", "./assets/img/Difficoltà_Tacca.png","img","20","45"});
+		//this.paths.add(new String[]{"OptionsWallpaper", "./assets/img/Options_Wallpaper.png","img","700","700"});
 		
 		// Caricamento spriteSheet
 		this.paths.add(new String[]{"mySpriteSheet", "./assets/img/Base_Elements.png", "spriteSheet", "32", "32", "7", "1", "7"}); 	
 		this.paths.add(new String[]{"myButton", "./assets/img/Button_menu.png", "spriteSheet", "150", "50", "2", "1", "2"});
 		this.paths.add(new String[]{"myButton2", "./assets/img/Button_punteggi.png", "spriteSheet", "150", "50", "2", "1", "2"});
-	
+		this.paths.add(new String[]{"myButton3", "./assets/img/Button_gioca.png", "spriteSheet", "300", "100", "2", "1", "2"});
+		this.paths.add(new String[]{"myButton4", "./assets/img/Button_impostazioni.png", "spriteSheet", "300", "100", "2", "1", "2"});
+		this.paths.add(new String[]{"myButton5", "./assets/img/Menu_Button_punteggi.png", "spriteSheet", "300", "100", "2", "1", "2"});
+		this.paths.add(new String[]{"myButton6", "./assets/img/difficoltà_button.png", "spriteSheet", "300", "75", "2", "1", "2"});
+		this.paths.add(new String[]{"myButton7", "./assets/img/volume_button.png", "spriteSheet", "300", "75", "2", "1", "2"});
+		this.paths.add(new String[]{"myButton8", "./assets/img/regole_button.png", "spriteSheet", "300", "75", "2", "1", "2"});
+		this.paths.add(new String[]{"myButton9", "./assets/img/options_menu_button.png", "spriteSheet", "300", "75", "2", "1", "2"});
 	}
 	
 	/**

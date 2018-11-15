@@ -10,8 +10,11 @@ package tetris.tetrisScene;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
+import tetris.entities.Button;
 // Project Imports
 import tetris.main.Tetris;
+import tetris.resources.ImageResource;
+import tetris.resources.SpriteSheetResource;
 
 /**
  * @author Franco
@@ -24,10 +27,68 @@ public class Options extends TetrisScene {
 	 */
 	private static TetrisScene INSTANCE;
 	
+	
+	
+	private final Group OptionsstaticNodes = new Group();
+	
+	
 	/**
-	 * Costruttore privato del menu, verrà eseguito uno volta sola.
+	 * Costruttore privato del menu, verrï¿½ eseguito uno volta sola.
 	 */
-	private Options() {	}
+	private Options() {	
+		
+		ImageResource wallpaper3 = (ImageResource) Tetris.getResourceLoader().getResource("OptionsWallpaper");
+		
+		
+		Button difficultyButton = new Button(200, 60, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton6"), new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				
+			}
+		}); 
+		
+		Button volumeButton = new Button(200, 260, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton7"), new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				
+			}
+		}); 
+		
+		Button rulesButton = new Button(200, 410, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton8"), new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				
+			}
+		}); 
+		
+		Button menuButton = new Button(200, 560, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton9"), new Runnable() {
+			
+			@Override
+			public void run() {
+				Tetris.setScene("Menu");
+				
+			}
+		}); 
+		
+		
+		
+		OptionsstaticNodes.getChildren().add(wallpaper3.getImageCanvas());
+		OptionsstaticNodes.getChildren().add(difficultyButton.getButtonImage());
+		OptionsstaticNodes.getChildren().add(volumeButton.getButtonImage());
+		OptionsstaticNodes.getChildren().add(rulesButton.getButtonImage());
+		OptionsstaticNodes.getChildren().add(menuButton.getButtonImage());
+		
+		
+		
+		ROOT.getChildren().add(OptionsstaticNodes);
+		
+	}
 
 	/**
 	 * 
@@ -50,7 +111,7 @@ public class Options extends TetrisScene {
 	}
 
 	/**
-	 * Codice che verrà eseguito continuamente
+	 * Codice che verrï¿½ eseguito continuamente
 	 */
 	@Override
 	public void loop(long now) {

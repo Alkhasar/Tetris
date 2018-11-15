@@ -24,6 +24,7 @@ import tetris.resources.AudioResource;
 import tetris.resources.ImageResource;
 import tetris.resources.Resource;
 import tetris.resources.SpriteSheetResource;
+import tetris.entities.Button;
 import tetris.entities.Sprite;
 
 /**
@@ -48,68 +49,55 @@ public class Menu extends TetrisScene {
 	private long last = 0;
 	
 	/**
-	 * Costruttore privato del menu, verrà eseguito uno volta sola.
+	 * Gruppo nel quale saranno contenuti gli elementi statici della grafica del menu
+	 */
+	private final Group MenustaticNodes = new Group();
+	
+	
+	/**
+	 * Costruttore privato del menu, verrï¿½ eseguito uno volta sola.
 	 */
 	private Menu() {	
+		ImageResource wallpaper2 = (ImageResource) Tetris.getResourceLoader().getResource("MenuWallpaper");
 		
-		// Verifico il funzionamento degli sprite											// RIGA ESEMPIO
-		Sprite test = new Sprite(0, 0, Tetris.getResourceLoader().getResource("myImage")) {	// RIGA ESEMPIO
-																							// RIGA ESEMPIO
-			@Override																		// RIGA ESEMPIO
-			public void update() {															// RIGA ESEMPIO
-				this.setY(this.getY() + 50);												// RIGA ESEMPIO
-				if(this.getY() > 700) {														// RIGA ESEMPIO
-					this.setY(0);															// RIGA ESEMPIO
-				}																			// RIGA ESEMPIO	
-			}																				// RIGA ESEMPIO
-																							// RIGA ESEMPIO
-		};																					// RIGA ESEMPIO
-																							// RIGA ESEMPIO
-		// Aggiungo lo sprite all'arrayList													// RIGA ESEMPIO
-		sprites.add(test);	
-		
-		// Aggiunge ogni sprite al ROOT node																			// RIGA ESEMPIO														
-		for (Sprite sprite : sprites) {																					// RIGA ESEMPIO
-			ROOT.getChildren().add((Canvas) ((ImageResource) sprite.getTexture()).getImageCanvas());					// RIGA ESEMPIO
-		}																												// RIGA ESEMPIO
-																														// RIGA ESEMPIO																// RIGA ESEMPIO
-		// Verifico che si riesca a caricare uno spriteSheet															// RIGA ESEMPIO
-		SpriteSheetResource tempe = (SpriteSheetResource) Tetris.getResourceLoader().getResource("mySpriteSheet");		// RIGA ESEMPIO
-		
-		// Per ogni immagine dello spriteSheet, aggiungila al ROOT node
-		for (int i = 0; i < tempe.getNumberOfImg(); i++){																// RIGA ESEMPIO
-			Canvas temp2 = tempe.getFrame(i);																			// RIGA ESEMPIO
-			temp2.setLayoutY(i*100);																					// RIGA ESEMPIO
-			temp2.setLayoutX(i*32);																						// RIGA ESEMPIO
-			ROOT.getChildren().add(temp2);																				// RIGA ESEMPIO
-		}
-		
-		ROOT.getChildren().get(3).addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-
+		Button playButton = new Button(200, 100, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton3"), new Runnable() {
+			
 			@Override
-			public void handle(MouseEvent event) {
+			public void run() {
 				Tetris.setScene("Game");
 				
 			}
 		});
 		
-		
-		ROOT.getChildren().get(2).addEventHandler(MouseEvent.MOUSE_ENTERED, new EventHandler<MouseEvent>() {
-
+		Button optionsButton = new Button(200, 300, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton4"), new Runnable() {
+			
 			@Override
-			public void handle(MouseEvent event) {
-				double CurrentX = ROOT.getChildren().get(3).getLayoutX();
-				if (CurrentX> 700) {
-					ROOT.getChildren().get(3).setLayoutX(0);						
-				}
-				else {
-					ROOT.getChildren().get(3).setLayoutX(CurrentX+5);
-				}
-				
-				
+			public void run() {
+				Tetris.setScene("Options");
 				
 			}
 		});
+		
+		Button leaderboardButton = new Button(200, 500, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton5"), new Runnable() {
+			
+			@Override
+			public void run() {
+				Tetris.setScene("LeaderBoard");
+				
+			}
+		});
+				
+		
+		//aggiungiamo a MenustaticNodes tutta la nostra grafica
+		MenustaticNodes.getChildren().add(wallpaper2.getImageCanvas());
+		MenustaticNodes.getChildren().add(playButton.getButtonImage());
+		MenustaticNodes.getChildren().add(optionsButton.getButtonImage());
+		MenustaticNodes.getChildren().add(leaderboardButton.getButtonImage());
+		
+		
+		//Aggiunta dei nodi statici e dinamici a ROOT
+		ROOT.getChildren().add(MenustaticNodes);
+		
 		
 		
 	}
@@ -130,7 +118,7 @@ public class Menu extends TetrisScene {
 	 */
 	@Override
 	public void init() {		
-		// Cerca di mostrare tutto ciò che è visibile
+		// Cerca di mostrare tutto ciï¿½ che ï¿½ visibile
 		Tetris.getPrimaryStage().show();
 		
 		// Verifico il funzionamento dell'audio																			// RIGA ESEMPIO
@@ -140,7 +128,7 @@ public class Menu extends TetrisScene {
 	}
 
 	/**
-	 * Codice che verrà eseguito continuamente
+	 * Codice che verrï¿½ eseguito continuamente
 	 */
 	@Override
 	public void loop(long now) {

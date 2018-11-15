@@ -1,8 +1,8 @@
 /**
  * Classe Tetris
  * 
- * E' la classe principale dalla quale partirà la finestra nella quale 
- * verrà eseguito il gioco. Il sistema passerà in automatico il primary
+ * E' la classe principale dalla quale partirï¿½ la finestra nella quale 
+ * verrï¿½ eseguito il gioco. Il sistema passerï¿½ in automatico il primary
  * stage, ovvero la finestra nel quale eseguire l'applicazione.
  */
 package tetris.main;
@@ -29,16 +29,16 @@ public class Tetris extends Application {
 	// Private Parameters
 	
 	/**
-	 * Il primaryStage è la finestra che viene creata su windows/linux.
+	 * Il primaryStage ï¿½ la finestra che viene creata su windows/linux.
 	 */
 	private static Stage PRIMARYSTAGE;
 	
 	/**
-	 * La Main scene è la scena che viene attacata alla finestra.
-	 * NB: Il fatto che si chiami "scene" può creare confusione con lo
+	 * La Main scene ï¿½ la scena che viene attacata alla finestra.
+	 * NB: Il fatto che si chiami "scene" puï¿½ creare confusione con lo
 	 * "sceneHandler" => Sono due cose totalmente differenti.
 	 * Lo sceneHandler si occupa di cambiare il nodo principiale (ROOT) alla
-	 * scena corrente, inoltre ogni schermata es. "Menu" è denominta una scena.
+	 * scena corrente, inoltre ogni schermata es. "Menu" ï¿½ denominta una scena.
 	 * Attenzione a non confondere.
 	 */
 	private static Scene MAINSCENE;
@@ -64,7 +64,7 @@ public class Tetris extends Application {
 	}
 	
 	/** 
-	 * Il metodo start è eseguito dopo il launch.
+	 * Il metodo start ï¿½ eseguito dopo il launch.
 	 * 
 	 * @param {Stage} Prende in automatico il parametro stage passatogli 
 	 * 				  dal sistema.
@@ -86,14 +86,14 @@ public class Tetris extends Application {
 		
 		// Impostazione della MAINSCENE per permettere di
 		// legarla allo stage principale.
-		MAINSCENE = new Scene(SCENEHANDLER.getScene("Game").getRoot(), Color.rgb(36, 38, 47));	
-		SCENEHANDLER.setScene("Game");
+		MAINSCENE = new Scene(SCENEHANDLER.getScene("Menu").getRoot(), Color.rgb(36, 38, 47));	
+		SCENEHANDLER.setScene("Menu");
 		
 		// Aggiunta del gestore eventi per tasti
 		MAINSCENE.setOnKeyPressed(SCENEHANDLER.getScene("Game"));
 		
 		// Aggiunge la MAINSCENE al primarystage da questo punto la gestione
-		// di quale nodo "ROOT" deve essere attacato alla mainscene è compito delle
+		// di quale nodo "ROOT" deve essere attacato alla mainscene ï¿½ compito delle
 		// scene stesse.
 		PRIMARYSTAGE.setScene(MAINSCENE);
 	}
@@ -126,7 +126,7 @@ public class Tetris extends Application {
 		// Aggiunta del gestore eventi per tasti
 		MAINSCENE.setOnKeyPressed(SCENEHANDLER.getScene(name));
 		
-		// Cerca di mostrare tutto ciò che è visibile
+		// Cerca di mostrare tutto ciï¿½ che ï¿½ visibile
 		PRIMARYSTAGE.show();
 	}
 	
