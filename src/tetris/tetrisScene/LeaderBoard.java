@@ -10,8 +10,11 @@ package tetris.tetrisScene;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
+import tetris.entities.Button;
 // Project Imports
 import tetris.main.Tetris;
+import tetris.resources.ImageResource;
+import tetris.resources.SpriteSheetResource;
 
 /**
  * @author Franco
@@ -24,10 +27,38 @@ public class LeaderBoard extends TetrisScene {
 	 */
 	private static TetrisScene INSTANCE;
 	
+	
 	/**
-	 * Costruttore privato del menu, verrà eseguito uno volta sola.
+	 * Gruppo nel quale saranno contenuti gli elementi statici della grafica delle opzioni
 	 */
-	private LeaderBoard() {	}
+	private final Group LeaderboardstaticNodes = new Group();
+	
+	
+	/**
+	 * Costruttore privato del menu, verrï¿½ eseguito uno volta sola.
+	 */
+	private LeaderBoard() {
+		
+		ImageResource wallpaper4 = (ImageResource) Tetris.getResourceLoader().getResource("LeaderboardWallpaper");
+		
+		
+		
+		Button menuButton = new Button(200, 560, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton9"), new Runnable() {
+			
+			@Override
+			public void run() {
+				Tetris.setScene("Menu");
+				
+			}
+		});
+		
+		
+		
+		LeaderboardstaticNodes.getChildren().add(wallpaper4.getImageCanvas());
+		LeaderboardstaticNodes.getChildren().add(menuButton.getButtonImage());
+		
+		ROOT.getChildren().add(LeaderboardstaticNodes);
+	}
 
 	/**
 	 * 
@@ -50,7 +81,7 @@ public class LeaderBoard extends TetrisScene {
 	}
 
 	/**
-	 * Codice che verrà eseguito continuamente
+	 * Codice che verrï¿½ eseguito continuamente
 	 */
 	@Override
 	public void loop(long now) {

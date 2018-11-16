@@ -28,7 +28,9 @@ public class Options extends TetrisScene {
 	private static TetrisScene INSTANCE;
 	
 	
-	
+	/**
+	 * Gruppo nel quale saranno contenuti gli elementi statici della grafica delle opzioni
+	 */
 	private final Group OptionsstaticNodes = new Group();
 	
 	

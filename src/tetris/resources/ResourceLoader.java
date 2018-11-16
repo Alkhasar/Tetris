@@ -56,6 +56,7 @@ public class ResourceLoader {
 		this.paths.add(new String[]{"myImage", "./assets/img/Base_Elements.png", "img", "224", "32"});
 		this.paths.add(new String[]{"MenuWallpaper", "./assets/img/Menu_Wallpaper.png","img","700","700"});
 		this.paths.add(new String[]{"OptionsWallpaper", "./assets/img/Options_Wallpaper.png","img","700","700"});
+		this.paths.add(new String[]{"LeaderboardWallpaper", "./assets/img/Leaderboard_Wallpaper.png","img","700","700"});
 		//this.paths.add(new String[]{"Tacca", "./assets/img/Difficoltà_Tacca.png","img","20","45"});
 		//this.paths.add(new String[]{"OptionsWallpaper", "./assets/img/Options_Wallpaper.png","img","700","700"});
 		
