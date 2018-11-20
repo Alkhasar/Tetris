@@ -51,7 +51,6 @@ public class Button extends Sprite {
 			@Override
 			public void handle(MouseEvent event) {
 				fx.run();
-				System.out.println("Sono passato in mouse clicked");
 			}
 		});
 		
@@ -63,7 +62,6 @@ public class Button extends Sprite {
 			public void handle(MouseEvent event) {
 				ButtonImage.getChildren().remove(0);
 				ButtonImage.getChildren().add(texture.getFrame(1));
-				System.out.println("Sono passato in mouse entered");
 			}
 		});
 		
@@ -74,7 +72,6 @@ public class Button extends Sprite {
 			public void handle(MouseEvent event) {
 				ButtonImage.getChildren().remove(0);
 				ButtonImage.getChildren().add(texture.getFrame(0));
-				System.out.println("Sono passato in mouse exited");
 			}
 		});	
 	}
@@ -91,6 +88,8 @@ public class Button extends Sprite {
 	
 	/**
 	 * Setter per la posizione x iniziale del pulsante
+	 * 
+	 * @param coordinata x
 	 */
 	@Override
 	public void setX(int x) {
@@ -100,17 +99,13 @@ public class Button extends Sprite {
 	
 	/**
 	 * Setter per la posizione y iniziale del pulsante
+	 * 
+	 * @param coordinata y
 	 */
 	@Override
 	public void setY(int y) {
 		ButtonImage.setLayoutY(y);
 		this.y = y;
 	}
-		
-	/**
-	 * Metodo per eseguire l'update della grafica / meccaniche 
-	 */
-	@Override
-	public void update() {}
 
 }

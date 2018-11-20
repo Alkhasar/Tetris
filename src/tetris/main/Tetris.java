@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import tetris.resources.ResourceLoader;
+import tetris.tetrisScene.LeaderBoard;
 //Project Imports
 import tetris.tetrisScene.SceneHandler;
 import tetris.tetrisScene.TetrisScene;
@@ -164,5 +165,11 @@ public class Tetris extends Application {
 		return SCENEHANDLER.getCurrentScene();
 	}
 	
-	
+	/**
+	 * Funzione per aggiungere un nuovo punteggio
+	 */
+	public static void newScore(String name, Integer score) {
+		LeaderBoard lb = (LeaderBoard) LeaderBoard.getInstance();
+		lb.newScore(name, score);
+	}
 }

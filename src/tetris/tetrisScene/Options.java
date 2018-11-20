@@ -6,11 +6,15 @@
  */
 package tetris.tetrisScene;
 
+import java.util.ArrayList;
+
 // Java Imports
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import tetris.entities.Button;
+import tetris.entities.Image;
+import tetris.entities.Sprite;
 // Project Imports
 import tetris.main.Tetris;
 import tetris.resources.ImageResource;
@@ -27,48 +31,55 @@ public class Options extends TetrisScene {
 	 */
 	private static TetrisScene INSTANCE;
 	
-	
 	/**
 	 * Gruppo nel quale saranno contenuti gli elementi statici della grafica delle opzioni
 	 */
-	private final Group OptionsstaticNodes = new Group();
+	private final Group staticNodes = new Group();
 	
+	/**
+	 * ArrayList per tenere traccia degli oggetti da renderizare nella scena.
+	 */
+	private ArrayList<Sprite> sprites = new ArrayList<>();  
 	
 	/**
 	 * Costruttore privato del menu, verrï¿½ eseguito uno volta sola.
 	 */
 	private Options() {	
 		
-		ImageResource wallpaper3 = (ImageResource) Tetris.getResourceLoader().getResource("OptionsWallpaper");
+		// Immagine di sfondo
+		Image wallpaper = new Image((ImageResource) Tetris.getResourceLoader().getResource("OptionsWallpaper"));
 		
-		
+		// Pulsante difficoltà
 		Button difficultyButton = new Button(200, 60, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton6"), new Runnable() {
 			
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
+				// DIFFICOLTA
 				
 			}
 		}); 
 		
+		// Pulsante volume
 		Button volumeButton = new Button(200, 260, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton7"), new Runnable() {
 			
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
+				// VOLUME
 				
 			}
 		}); 
 		
+		// Pulsante regole
 		Button rulesButton = new Button(200, 410, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton8"), new Runnable() {
 			
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
+				// VISUALIZZAZIONE DELLE REGOLE
 				
 			}
 		}); 
 		
+		// Pulsante menu
 		Button menuButton = new Button(200, 560, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton9"), new Runnable() {
 			
 			@Override
@@ -79,17 +90,22 @@ public class Options extends TetrisScene {
 		}); 
 		
 		
+		// Aggiunte degli elementi a staticnodes
+		staticNodes.getChildren().add(wallpaper.getImage());
+		staticNodes.getChildren().add(difficultyButton.getButtonImage());
+		staticNodes.getChildren().add(volumeButton.getButtonImage());
+		staticNodes.getChildren().add(rulesButton.getButtonImage());
+		staticNodes.getChildren().add(menuButton.getButtonImage());
 		
-		OptionsstaticNodes.getChildren().add(wallpaper3.getImageCanvas());
-		OptionsstaticNodes.getChildren().add(difficultyButton.getButtonImage());
-		OptionsstaticNodes.getChildren().add(volumeButton.getButtonImage());
-		OptionsstaticNodes.getChildren().add(rulesButton.getButtonImage());
-		OptionsstaticNodes.getChildren().add(menuButton.getButtonImage());
+		// Aggiunta di ogni sprite all array
+		sprites.add(wallpaper);
+		sprites.add(difficultyButton);
+		sprites.add(volumeButton);
+		sprites.add(rulesButton);
+		sprites.add(menuButton);
 		
-		
-		
-		ROOT.getChildren().add(OptionsstaticNodes);
-		
+		// Aggiunta di static nodes a root
+		ROOT.getChildren().add(staticNodes);	
 	}
 
 	/**
@@ -108,7 +124,6 @@ public class Options extends TetrisScene {
 	 */
 	@Override
 	public void init() {
-		System.out.println("EUREKA OPZIONI FUNZIONA!!");
 
 	}
 
@@ -117,16 +132,15 @@ public class Options extends TetrisScene {
 	 */
 	@Override
 	public void loop(long now) {
-		System.out.println("EUREKA SIAMO NEL LOOP DI OPZIONI!!");
+		for (Sprite sprite : sprites) {
+			sprite.update(now);
+		}
 	}
 
-	/* (non-Javadoc)
-	 * @see javafx.event.EventHandler#handle(javafx.event.Event)
+	/**
+	 * Gestione dei tasti
 	 */
 	@Override
-	public void handle(KeyEvent event) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void handle(KeyEvent event) {}
 
 }

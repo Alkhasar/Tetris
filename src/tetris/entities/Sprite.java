@@ -24,6 +24,11 @@ public abstract class Sprite {
 	protected final Resource texture;
 	
 	/**
+	 * Funzione che verrà eseguita ad ogni update
+	 */
+	protected Runnable fx; 
+	
+	/**
 	 * Coordinata x.
 	 */
 	protected int x;
@@ -64,7 +69,11 @@ public abstract class Sprite {
 	 * Il metodo update va eseguito ad ogni ciclo e deve essere
 	 * sviluppato per ogni sottoclasse si Sprite.
 	 */
-	abstract public void update();
+	 public void update(long now) {
+		 if(fx != null) {
+			 fx.run();
+		 }
+	 };
 	
 	/**
 	 * Restituisce la coordinata x dello sprite.
@@ -115,4 +124,11 @@ public abstract class Sprite {
 		return texture;
 	}
 	
+	/**
+	 * Funzione da fare eseguire all'update
+	 * @param fx
+	 */
+	public void setFx(Runnable fx) {
+		this.fx = fx;
+	}
 }

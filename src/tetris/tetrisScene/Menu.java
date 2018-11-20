@@ -6,29 +6,22 @@
 package tetris.tetrisScene;
 
 
-import javafx.event.EventHandler;
 // Java Imports
 import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
-import java.util.Date;
 
 // Project Imports
 import tetris.main.Tetris;
-import tetris.resources.AudioResource;
 import tetris.resources.ImageResource;
-import tetris.resources.Resource;
 import tetris.resources.SpriteSheetResource;
 import tetris.entities.Button;
+import tetris.entities.Image;
 import tetris.entities.Sprite;
 
 /**
  * @author Franco
+ * @author Stefan
  *
  */
 public class Menu extends TetrisScene {
@@ -51,15 +44,17 @@ public class Menu extends TetrisScene {
 	/**
 	 * Gruppo nel quale saranno contenuti gli elementi statici della grafica del menu
 	 */
-	private final Group MenustaticNodes = new Group();
+	private final Group staticNodes = new Group();
 	
 	
 	/**
 	 * Costruttore privato del menu, verr� eseguito uno volta sola.
 	 */
-	private Menu() {	
-		ImageResource wallpaper2 = (ImageResource) Tetris.getResourceLoader().getResource("MenuWallpaper");
+	private Menu() {
+		// Immagine di sfondo
+		Image wallpaper = new Image((ImageResource) Tetris.getResourceLoader().getResource("MenuWallpaper")); // (ImageResource) Tetris.getResourceLoader().getResource("MenuWallpaper");
 		
+		// Pulsante gioca
 		Button playButton = new Button(200, 100, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton3"), new Runnable() {
 			
 			@Override
@@ -69,6 +64,7 @@ public class Menu extends TetrisScene {
 			}
 		});
 		
+		// Pulsante opzioni
 		Button optionsButton = new Button(200, 300, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton4"), new Runnable() {
 			
 			@Override
@@ -78,6 +74,7 @@ public class Menu extends TetrisScene {
 			}
 		});
 		
+		// Pulsante leaderboard
 		Button leaderboardButton = new Button(200, 500, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton5"), new Runnable() {
 			
 			@Override
@@ -89,17 +86,19 @@ public class Menu extends TetrisScene {
 				
 		
 		//aggiungiamo a MenustaticNodes tutta la nostra grafica
-		MenustaticNodes.getChildren().add(wallpaper2.getImageCanvas());
-		MenustaticNodes.getChildren().add(playButton.getButtonImage());
-		MenustaticNodes.getChildren().add(optionsButton.getButtonImage());
-		MenustaticNodes.getChildren().add(leaderboardButton.getButtonImage());
+		staticNodes.getChildren().add(wallpaper.getImage());
+		staticNodes.getChildren().add(playButton.getButtonImage());
+		staticNodes.getChildren().add(optionsButton.getButtonImage());
+		staticNodes.getChildren().add(leaderboardButton.getButtonImage());
 		
+		// Aggiungiamo tutti gli sprite all'array per tenerne traccia
+		sprites.add(wallpaper);
+		sprites.add(playButton);
+		sprites.add(optionsButton);
+		sprites.add(leaderboardButton);
 		
 		//Aggiunta dei nodi statici e dinamici a ROOT
-		ROOT.getChildren().add(MenustaticNodes);
-		
-		
-		
+		ROOT.getChildren().add(staticNodes);
 	}
 
 	/**
@@ -119,12 +118,7 @@ public class Menu extends TetrisScene {
 	@Override
 	public void init() {		
 		// Cerca di mostrare tutto ci� che � visibile
-		Tetris.getPrimaryStage().show();
-		
-		// Verifico il funzionamento dell'audio																			// RIGA ESEMPIO
-//		AudioResource music = (AudioResource) Tetris.getResourceLoader().getResource("myAudio");						// RIGA ESEMPIO
-//		music.loop();																									// RIGA ESEMPIO
-//		music.play();					
+		Tetris.getPrimaryStage().show();				
 	}
 
 	/**
@@ -132,20 +126,19 @@ public class Menu extends TetrisScene {
 	 */
 	@Override
 	public void loop(long now) {
-		if((now - last)/1000000000 > 0) {			// RIGA ESEMPIO
-			last = now;								// RIGA ESEMPIO
-			for (Sprite sprite : sprites) 			// RIGA ESEMPIO
-				sprite.update();					// RIGA ESEMPIO
-		}											// RIGA ESEMPIO
-	}												// RIGA ESEMPIO
+		// Aggiornamento dell' ultimo frame
+		last = now;
+		
+		// Aggiornamento di ogni sprite
+		for (Sprite sprite : sprites) {
+			sprite.update(now);
+		}
+	}												
 
-	/* (non-Javadoc)
-	 * @see javafx.event.EventHandler#handle(javafx.event.Event)
+	/**
+	 * Gestione dei tasti
 	 */
 	@Override
-	public void handle(KeyEvent event) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void handle(KeyEvent event) {}
 
 }

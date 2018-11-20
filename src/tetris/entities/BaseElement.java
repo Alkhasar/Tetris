@@ -5,7 +5,8 @@ package tetris.entities;
 
 // Java Imports
 import javafx.scene.canvas.Canvas;
-
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
 // Project imports
 import tetris.resources.Resource;
 import tetris.resources.SpriteSheetResource;
@@ -44,14 +45,9 @@ public class BaseElement extends Sprite {
 		this.relX = relX;
 		this.relY = relY;
 		
+		// Settaggio del tipo
 		this.type = type;
 	}
-
-	/**
-	 * Metodo Update, non implementato per l'elemento base.
-	 */
-	@Override
-	public void update() {}
 
 	/**
 	 * @return the relX
@@ -90,6 +86,12 @@ public class BaseElement extends Sprite {
 	 */
 	public Canvas getImageCanvas() {
 		return ((ImageResource) getTexture()).getImageCanvas();
+	}
+	
+	public void swapRelCoordinates() {
+		int temp = getRelX();
+		setRelX(getRelY());
+		setRelY(temp);
 	}
 	
 }
