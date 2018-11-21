@@ -160,7 +160,7 @@ public class Game extends TetrisScene {
 			} );
 		
 		// Creazione della pausa
-		Button menuButton = new Button(275,250,(SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton"),new Runnable()  {
+		Button menuButton = new Button(275,250,(SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton10"),new Runnable()  {
 		// definiamo il nostro runnable, in pratica diciamo cosa deve fare il pulsante	
 			@Override
 			public void run() {
@@ -275,16 +275,17 @@ public class Game extends TetrisScene {
 	@Override
 	public void loop(long now) {
 		if(!(tetramino.isGameOver())) {
-			if((now - last) > t/((rows)/10+1)) {
+			if((now - last) > t/((rows*100)/10+1)) {
 				last = now;
 				tetramino.moveTetramino(0, 1);
 			} else {
 				
 				// Verifica se è necessaria la creazione di un nuovo tetramino
 				if(tetramino.isStopped()) {
+					System.out.println(tetramino.getBaseElement().size());
 					tetramino.addToGrid();
-	//				grid.print();													//DEBUG
-	//				System.out.println("---------------------------------------");	//DEBUG
+					grid.print();//DEBUG
+					System.out.println("---------------------------------------");	//DEBUG
 					newTetramino(nextTetramino);
 					swapTetramino(random.nextInt(7));
 					for (BaseElement baseElement : tetramino.getBaseElement()) {
@@ -309,8 +310,8 @@ public class Game extends TetrisScene {
 						for (BaseElement baseElement : row) {
 							removeNode(baseElement.getImageCanvas());
 							sprites.remove(baseElement);
-							rows++;
 						}
+						rows++;
 						grid.emptyRow(y);
 						music.setFeedRate(music.getCurrentrate()+0.03);
 					}

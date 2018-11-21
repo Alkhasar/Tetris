@@ -67,7 +67,8 @@ public class ResourceLoader {
 		
 		// Caricamento spriteSheet
 		this.paths.add(new String[]{"mySpriteSheet", "./assets/img/Base_Elements.png", "spriteSheet", "32", "32", "7", "1", "7"}); 	
-		this.paths.add(new String[]{"myButton", "./assets/img/Button_menu.png", "spriteSheet", "150", "50", "2", "1", "2"});
+		this.paths.add(new String[]{"myButton10", "./assets/img/Button_menu.png", "spriteSheet", "150", "50", "2", "1", "2"});
+		this.paths.add(new String[]{"myButton", "./assets/img/Button_pausa.png", "spriteSheet", "150", "50", "2", "1", "2"});
 		this.paths.add(new String[]{"myButton2", "./assets/img/Button_punteggi.png", "spriteSheet", "150", "50", "2", "1", "2"});
 		this.paths.add(new String[]{"myButton3", "./assets/img/Button_gioca.png", "spriteSheet", "300", "75", "2", "1", "2"});
 		this.paths.add(new String[]{"myButton4", "./assets/img/Button_impostazioni.png", "spriteSheet", "300", "75", "2", "1", "2"});
@@ -76,6 +77,8 @@ public class ResourceLoader {
 		this.paths.add(new String[]{"myButton7", "./assets/img/volume_button.png", "spriteSheet", "300", "75", "2", "1", "2"});
 		this.paths.add(new String[]{"myButton8", "./assets/img/regole_button.png", "spriteSheet", "300", "75", "2", "1", "2"});
 		this.paths.add(new String[]{"myButton9", "./assets/img/options_menu_button.png", "spriteSheet", "300", "75", "2", "1", "2"});
+		this.paths.add(new String[]{"myButton11", "./assets/img/plus.png", "spriteSheet", "35", "35", "2", "1", "2"});
+		this.paths.add(new String[]{"myButton12", "./assets/img/minus.png", "spriteSheet", "35", "35", "2", "1", "2"});
 	}
 	
 	/**

@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import tetris.main.Tetris;
-import tetris.resources.Resource;
 import tetris.resources.SpriteSheetResource;
-import tetris.tetrisScene.Game;
 
 /**
  * @author Marco Pellegrino
@@ -271,9 +269,9 @@ public class Tetramino {
 	 * Aggiunge gli elementi che formano i tetramini alla griglia una volta che sono atterrati 
 	 */
 	public void addToGrid() {
-		for(BaseElement baseElement:currentTetramino){	
-			grid.insertElement(baseElement, (int) ((baseElement.getX()-190)/32), (int) ((baseElement.getY()-20)/32));		
-			}
+		for(BaseElement baseElement : currentTetramino){
+			grid.insertElement(baseElement, ((baseElement.getX()-190)/32), ((baseElement.getY()-20)/32));		
+		}
 		currentTetramino.clear();
 	}
 

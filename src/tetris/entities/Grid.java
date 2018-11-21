@@ -34,6 +34,7 @@ public class Grid {
 	}
 	
 	public void insertElement (BaseElement e, int x, int y) {
+		System.out.println("COORDINATE: " + x + "-" + y);
 		grid[y][x] = e;
 	}
 	
