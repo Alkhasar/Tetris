@@ -169,7 +169,7 @@ public class Game extends TetrisScene {
 		} );
 		
 		// Creazione della casella di testo
-		TextField playerName = new TextField("AnonimousPlayer");
+		TextField playerName = new TextField("Anonimous");
 		playerName.setLayoutX(275);
 		playerName.setLayoutY(400);
 		
@@ -251,6 +251,7 @@ public class Game extends TetrisScene {
 	 */
 	@Override
 	public void init() {
+		// Creazione del primo tetramino
 		newTetramino(random.nextInt(7));
 		for (BaseElement baseElement : tetramino.getBaseElement()) {
 			dynamicNodes.getChildren().add(baseElement.getImageCanvas());
@@ -260,10 +261,13 @@ public class Game extends TetrisScene {
 		addNode(tetraminoImages.get(nextTetramino).getImage());
 		sprites.add(tetraminoImages.get(nextTetramino));
 		
-		// Verifico il funzionamento dell'audio																		
+		// Viene fatto partire l'audio																		
 		music = (AudioResource) Tetris.getResourceLoader().getResource("myAudio");
 		music.loop();
 		music.play();
+		
+		// Viene impostato il volume dell'audio in base alle opzioni
+		music.setVolume(((Options) Options.getInstance()).getVolume());
 		
 		// Cerca di mostrare tutto ciò che è visibile
 		Tetris.getPrimaryStage().show();
@@ -275,17 +279,17 @@ public class Game extends TetrisScene {
 	@Override
 	public void loop(long now) {
 		if(!(tetramino.isGameOver())) {
-			if((now - last) > t/((rows*100)/10+1)) {
+			if((now - last) > t/((rows)/10+1)) {
 				last = now;
 				tetramino.moveTetramino(0, 1);
 			} else {
 				
 				// Verifica se è necessaria la creazione di un nuovo tetramino
 				if(tetramino.isStopped()) {
-					System.out.println(tetramino.getBaseElement().size());
+//					System.out.println(tetramino.getBaseElement().size());
 					tetramino.addToGrid();
-					grid.print();//DEBUG
-					System.out.println("---------------------------------------");	//DEBUG
+//					grid.print();//DEBUG
+//					System.out.println("---------------------------------------");	//DEBUG
 					newTetramino(nextTetramino);
 					swapTetramino(random.nextInt(7));
 					for (BaseElement baseElement : tetramino.getBaseElement()) {
@@ -294,7 +298,7 @@ public class Game extends TetrisScene {
 					}
 				}
 	
-				// Verifica se è stato richiesto una rotazione o un movimento
+				// Verifica se è stata richiesta una rotazione o un movimento
 				if(delta[0]!=0 || delta[1]!=0) {
 					tetramino.moveTetramino(delta[0], delta[1]);
 					delta[0] = delta[1] = 0;
@@ -336,6 +340,7 @@ public class Game extends TetrisScene {
 	@Override
 	public void exit() {
 		System.out.println("HIGHSCORE: " + rows);
+		
 		// Distruggere tutto cio che è creato nell'init
 		dynamicNodes.setVisible(true);
 		staticNodes.setVisible(true);

@@ -42,6 +42,11 @@ public class Options extends TetrisScene {
 	private ArrayList<Sprite> sprites = new ArrayList<>();  
 	
 	/**
+	 * Variabile per tenere traccia del volume corrente
+	 */
+	private double volume = 1.0;
+	
+	/**
 	 * Costruttore privato del menu, verr� eseguito uno volta sola.
 	 */
 	private Options() {	
@@ -173,5 +178,19 @@ public class Options extends TetrisScene {
 	 */
 	@Override
 	public void handle(KeyEvent event) {}
+	
+	/**
+	 * Getter per il volume corrente
+	 */
+	public double getVolume() {
+		return volume;
+	}
+	
+	/**
+	 * Setter per il volume
+	 */
+	private void setVolume(double v) {
+		volume = v;
+	}
 
 }

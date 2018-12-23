@@ -37,7 +37,8 @@ public abstract class TetrisScene implements EventHandler<KeyEvent> {
 	abstract void loop(long now);
 	
 	/**
-	 * Metodo chiamato ogni volta che si esce dalla scena
+	 * Metodo chiamato ogni volta che si esce dalla scena, non è abstract
+	 * poichè va fatto l'override solo se necessario.
 	 */
 	public void exit() {};
 	

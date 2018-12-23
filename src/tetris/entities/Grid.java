@@ -44,10 +44,10 @@ public class Grid {
 		toMove.setY(toMove.getY()+32);
 	}
 	
-	public void setTetramino (Tetramino t) {
-		currentTetramino = t;
-		//aggiunge BaseElement a grid
-	}
+//	public void setTetramino (Tetramino t) {
+//		currentTetramino = t;
+//		//aggiunge BaseElement a grid
+//	}
 	
 	public BaseElement[] checkRow (int i) {
 		BaseElement[] full = grid[i];
@@ -75,6 +75,8 @@ public class Grid {
 	public void shiftRow (int i) {
 		for(int j = i; j>0; j--) {
 			grid[j] = grid[j-1];
+
+			
 			for(int k = 0; k<width; k++) {
 				if(grid[j][k]!=null) {
 					grid[j][k].setY(grid[j][k].getY()+32);
@@ -96,8 +98,12 @@ public class Grid {
 		String str;
 		for(int y = 0; y < height; y++) {
 			str = "" + y + ": ";
+			if(y<=9) {
+				str += " ";
+			}
 			for(int x = 0; x < width; x++) {
-				str += (isFilled(x, y))?0:1;
+				str += (isFilled(x, y))? "X": ".";
+				str += " ";
 			}
 			System.out.println(str);
 		}

@@ -36,6 +36,11 @@ public class AudioResource extends Resource {
 	private double currentRate = 1.0;
 	
 	/**
+	 * Volume corrente
+	 */
+	private double currentVolume = 1.0;
+	
+	/**
 	 * Inizialliza la risorsa e la carica nella variabile sound.
 	 * 
 	 * @param path
@@ -104,11 +109,14 @@ public class AudioResource extends Resource {
 	}
 	
 	/**
-	 * Rende il brano più rapido
+	 * Metodo per impostare la velocità con cui il brano viene
+	 * riprodotto.
+	 * 
+	 * @param d Velocità di riproduzione, compreso tra [0.0, 8.0]
 	 */
 	public void setFeedRate(double d) {
-		if(d>8) {
-			d=8;
+		if(d > 8.0) {
+			d = 8.0;
 		}
 		currentRate = d;
 		mediaPlayer.setRate(d);
@@ -117,4 +125,18 @@ public class AudioResource extends Resource {
 	public double getCurrentrate() {
 		return currentRate;
 	}
+	
+	/**
+	 * Metodo per impostare il volume
+	 * 
+	 * @param v Valore del volume, deve essere un double compreso tra [0.0, 1.0]
+	 */
+	public void setVolume(double v) {
+		if(v > 1.0) {
+			v = 1.0;
+		}
+		currentVolume = v;
+		mediaPlayer.setVolume(v);;
+	}
+	
 }

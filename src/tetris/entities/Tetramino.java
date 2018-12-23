@@ -270,6 +270,7 @@ public class Tetramino {
 	 */
 	public void addToGrid() {
 		for(BaseElement baseElement : currentTetramino){
+			System.out.println("TETR: "+ baseElement);
 			grid.insertElement(baseElement, ((baseElement.getX()-190)/32), ((baseElement.getY()-20)/32));		
 		}
 		currentTetramino.clear();
