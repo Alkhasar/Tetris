@@ -48,6 +48,11 @@ public class Options extends TetrisScene {
 	private double volume = 1.0;
 	
 	/**
+	 * Variabile per tenere traccia della defficoltà impostata
+	 */
+	private int difficulty = 2;
+	
+	/**
 	 * Costruttore privato del menu, verrï¿½ eseguito uno volta sola.
 	 */
 	private Options() {	
@@ -203,9 +208,33 @@ public class Options extends TetrisScene {
 	
 	/**
 	 * Setter per il volume
+	 * 
+	 * @param v Volume impostato
 	 */
 	private void setVolume(double v) {
 		volume = v;
 	}
 
+	/**
+	 * Getter per il valore della difficoltà
+	 */
+	public int getDifficulty() {
+		return difficulty;
+	}
+	
+	/**
+	 * Setter per il valore della difficoltà
+	 * 
+	 * @param d Difficolà a cui si vuole impostare il gioco
+	 */
+	private void setDifficulty(int d) {
+		if(d > 3) {
+			d = 3;
+		}
+		if(d < 1) {
+			d = 1;
+		}
+		difficulty = d;
+	}
+	
 }
