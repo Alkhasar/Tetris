@@ -13,6 +13,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import tetris.entities.Button;
+import tetris.entities.TText;
 import tetris.entities.Image;
 import tetris.entities.Sprite;
 // Project Imports
@@ -54,8 +55,11 @@ public class Options extends TetrisScene {
 		// Immagine di sfondo
 		Image wallpaper = new Image((ImageResource) Tetris.getResourceLoader().getResource("OptionsWallpaper"));
 		
-		 
 		
+		TText TEST = new TText(100, 100, "speriamo funzioni!!!!", 50);
+		
+		
+		 		
 		// Pulsante per diminuire la difficoltà
 		Button difficultyButtonMinus = new Button(200, 150, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton12"), new Runnable() {
 					
@@ -71,16 +75,14 @@ public class Options extends TetrisScene {
 					
 			@Override
 			public void run() {
+				
+			TEST.setnewText("MAMMMA MIAAAAAAAAAAAAAA!");
 				// VOLUME
 						
 			}
 		});
 		
-		
-		
-		
-		
-		
+				
 		// Pulsante per diminuire il volume
 		Button volumeButtonMinus = new Button(200, 300, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton12"), new Runnable() {
 			
@@ -140,8 +142,21 @@ public class Options extends TetrisScene {
 		sprites.add(rulesButton);
 		sprites.add(menuButton);
 		
+		
+		
+		
+		
+		staticNodes.getChildren().add(TEST.getText());
+		
+		
 		// Aggiunta di static nodes a root
-		ROOT.getChildren().add(staticNodes);	
+		ROOT.getChildren().add(staticNodes);
+		
+		
+		
+		
+		
+		
 	}
 
 	/**
