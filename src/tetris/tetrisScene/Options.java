@@ -247,7 +247,12 @@ public class Options extends TetrisScene {
 		difficulty = d;
 	}
 	
-	// converte un valore intero per la difficolta in una parola
+	/** converte un valore intero per la difficolta in una parola
+	 * 
+	 * @param d
+	 * @param Dif
+	 * @return
+	 */
 	private String tellDifficulty(int d, String Dif) {	
 		if(d==2) {
 			Dif="Normale";			
@@ -261,7 +266,11 @@ public class Options extends TetrisScene {
 		return Dif;
 	}
 	
-	// Approssima un valore con la virgola in un intero
+	/** Approssima un valore con la virgola in un intero
+	 * 
+	 * @param d
+	 * @return
+	 */
 	private int getInt(double d) {
 		int i = (int) d;
 		if(d-i>0.6) {
