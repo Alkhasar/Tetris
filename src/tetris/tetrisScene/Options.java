@@ -45,12 +45,14 @@ public class Options extends TetrisScene {
 	/**
 	 * Variabile per tenere traccia del volume corrente
 	 */
-	private double volume = 1.0;
+	private double volume = 0.5;
 	
 	/**
 	 * Variabile per tenere traccia della defficoltà impostata
 	 */
 	private int difficulty = 2;
+	
+	private String DifficultyText = "Normale";
 	
 	/**
 	 * Costruttore privato del menu, verrï¿½ eseguito uno volta sola.
@@ -60,18 +62,21 @@ public class Options extends TetrisScene {
 		// Immagine di sfondo
 		Image wallpaper = new Image((ImageResource) Tetris.getResourceLoader().getResource("OptionsWallpaper"));
 		
-		
-		TText TEST = new TText(100, 100, "speriamo funzioni!!!!", 50);
-		
-		
+		//Uso la classe TText per aggiungere tutti i testi
+		TText Title = new TText(150, 50, "IMPOSTAZIONI", 50);
+		TText VolumeValue = new TText(300,330,"Volume: " + getInt(getVolume()*100) + "%",35);
+		TText Volume = new TText(190,295,"REGOLAZIONE AUDIO",35);
+		TText DifficultyValue = new TText(300,180, tellDifficulty(difficulty, DifficultyText) ,35);
+		TText Difficulty = new TText(190,145,"DIFFICOLTA' GIOCO",35);
 		 		
 		// Pulsante per diminuire la difficoltÃ 
 		Button difficultyButtonMinus = new Button(200, 150, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton12"), new Runnable() {
 					
 			@Override
 			public void run() {
-				// VOLUME
-						
+				// DIFFICOLTA'
+				setDifficulty(getDifficulty()-1);
+				DifficultyValue.setnewText(tellDifficulty(getDifficulty(), DifficultyText));
 			}
 		});
 				
@@ -79,22 +84,21 @@ public class Options extends TetrisScene {
 		Button difficultyButtonPlus = new Button(240, 150, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton11"), new Runnable() {
 					
 			@Override
-			public void run() {
-				
-			TEST.setnewText("MAMMMA MIAAAAAAAAAAAAAA!");
-				// VOLUME
-						
+			public void run() {				
+				// DIFFICOLTA'
+				setDifficulty(getDifficulty()+1);
+				DifficultyValue.setnewText(tellDifficulty(getDifficulty(), DifficultyText));		
 			}
 		});
-		
-				
+						
 		// Pulsante per diminuire il volume
 		Button volumeButtonMinus = new Button(200, 300, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton12"), new Runnable() {
 			
 			@Override
 			public void run() {
 				// VOLUME
-				
+				setVolume(getVolume()-0.05);
+				VolumeValue.setnewText("Volume: " + getInt(getVolume()*100) + "%");
 			}
 		});
 		
@@ -104,7 +108,8 @@ public class Options extends TetrisScene {
 			@Override
 			public void run() {
 				// VOLUME
-				
+				setVolume(getVolume()+0.05);
+				VolumeValue.setnewText("Volume: " + getInt(getVolume()*100) + "%");
 			}
 		});
 		
@@ -129,6 +134,11 @@ public class Options extends TetrisScene {
 		}); 
 		
 		
+		
+		
+		
+		
+		
 		// Aggiunte degli elementi a staticnodes
 		staticNodes.getChildren().add(wallpaper.getImage());
 		staticNodes.getChildren().add(difficultyButtonMinus.getButtonImage());
@@ -146,22 +156,16 @@ public class Options extends TetrisScene {
 		sprites.add(volumeButtonMinus);
 		sprites.add(rulesButton);
 		sprites.add(menuButton);
-		
-		
-		
-		
-		
-		staticNodes.getChildren().add(TEST.getText());
-		
+				
+		// Aggiunta di tutti i testi 
+		staticNodes.getChildren().add(Difficulty.getText());
+		staticNodes.getChildren().add(DifficultyValue.getText());
+		staticNodes.getChildren().add(Title.getText());
+		staticNodes.getChildren().add(VolumeValue.getText());
+		staticNodes.getChildren().add(Volume.getText());
 		
 		// Aggiunta di static nodes a root
-		ROOT.getChildren().add(staticNodes);
-		
-		
-		
-		
-		
-		
+		ROOT.getChildren().add(staticNodes);		
 	}
 
 	/**
@@ -212,6 +216,12 @@ public class Options extends TetrisScene {
 	 * @param v Volume impostato
 	 */
 	private void setVolume(double v) {
+		if(v > 1.0) {
+			v = 1.0;
+		}
+		if(v < 0.0) {
+			v = 0.0;
+		}
 		volume = v;
 	}
 
@@ -237,4 +247,26 @@ public class Options extends TetrisScene {
 		difficulty = d;
 	}
 	
+	// converte un valore intero per la difficolta in una parola
+	private String tellDifficulty(int d, String Dif) {	
+		if(d==2) {
+			Dif="Normale";			
+		}
+		if(d==1) {
+			Dif="Facile";
+		}
+		if(d==3){
+			Dif="Estremo";
+		}		
+		return Dif;
+	}
+	
+	
+	private int getInt(double d) {
+		int i = (int) d;
+		if(d-i>0.6) {
+			i++;
+		}
+		return i;
+	}
 }
