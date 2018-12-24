@@ -261,7 +261,7 @@ public class Options extends TetrisScene {
 		return Dif;
 	}
 	
-	
+	// Approssima un valore con la virgola in un intero
 	private int getInt(double d) {
 		int i = (int) d;
 		if(d-i>0.6) {
