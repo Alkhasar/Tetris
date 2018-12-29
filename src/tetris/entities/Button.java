@@ -10,15 +10,20 @@ package tetris.entities;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.input.MouseEvent;
+import tetris.main.Tetris;
 
 // Project Imports
 import tetris.resources.SpriteSheetResource;
-
+import tetris.resources.AudioResource;
 /**
  * @author Stefan 
  *
  */
 public class Button extends Sprite {
+	
+	private AudioResource clickk;
+	
+	private AudioResource hover;
 
 	/**
 	 * Gruppo contenente l'immagine attuale del pulsante
@@ -26,17 +31,17 @@ public class Button extends Sprite {
 	private Group ButtonImage = new Group();  
 	
 	/**
-	 * Funzione che verr‡ eseguita al click
+	 * Funzione che verr√† eseguita al click
 	 */
 	private Runnable fx;
 		
 	/**
-	 * Questa funzione assegner‡ a ogni pulsante la sua posizione, la sua immagine e le dar‡ una sembianza di movimento
+	 * Questa funzione assegner√† a ogni pulsante la sua posizione, la sua immagine e le dar√† una sembianza di movimento
 	 * 
 	 * @param x posizione iniziale del bottone
 	 * @param y posizione inizilae del bottone
 	 * @param texture immagini del futuro bottone
-	 * @param fx azione chverr‡ eseguita dal bottone
+	 * @param fx azione chverr√† eseguita dal bottone
 	 */
 	public Button(int x, int y, SpriteSheetResource texture, Runnable fx) {
 		super(x, y, texture);	
@@ -45,11 +50,15 @@ public class Button extends Sprite {
 		setX(x);
 		setY(y);
 		
-		// chiama il runnable che far‡ eseguire un comando alla funzione
+	        clickk = (AudioResource) Tetris.getResourceLoader().getResource("click");
+		hover = (AudioResource) Tetris.getResourceLoader().getResource("hover");
+		
+		// chiama il runnable che far√† eseguire un comando alla funzione
 		ButtonImage.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
 			@Override
 			public void handle(MouseEvent event) {
+				clickk.play();
 				fx.run();
 			}
 		});
@@ -60,6 +69,7 @@ public class Button extends Sprite {
 
 			@Override
 			public void handle(MouseEvent event) {
+				hover.play();
 				ButtonImage.getChildren().remove(0);
 				ButtonImage.getChildren().add(texture.getFrame(1));
 			}
@@ -77,7 +87,7 @@ public class Button extends Sprite {
 	}
 	
 	/**
-	 * Getter per il gruppo nel quale Ë conservata l'immagine corrente
+	 * Getter per il gruppo nel quale √® conservata l'immagine corrente
 	 * del pulsante
 	 * 
 	 * @return il gruppo contenente l'immagine
