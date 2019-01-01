@@ -6,7 +6,7 @@ import tetris.tetrisScene.Game;
 
 public class Grid {
 
-	private static Grid INSTANCE;
+	private static Grid INSTANCE;  
 	
 	private int width;
 	
@@ -16,30 +16,30 @@ public class Grid {
 	
 	private Tetramino currentTetramino;
 	
-	private Grid(int w, int h) {
+	private Grid(int w, int h) {                             //definizione griglia
 		width = w;
 		height = h;
 		grid = new BaseElement[h][w];
 	}
 	
-	public static Grid getInstance(int w, int h) {
+	public static Grid getInstance(int w, int h) {           //creazione unica grid
 		if (INSTANCE == null) {
 			INSTANCE = new Grid(w, h);
 		}
 		return INSTANCE;
 	}
 	
-	private BaseElement getElement (int x, int y) {
+	private BaseElement getElement (int x, int y) {         //restituisce il BaseElement in coord. x, y
 		return grid[y][x];
 	}
 	
-	public void insertElement (BaseElement e, int x, int y) {
+	public void insertElement (BaseElement e, int x, int y) {      //inserisce BaseElement
 		System.out.println("COORDINATE: " + x + "-" + y);
 		grid[y][x] = e;
 	}
 	
-	//false se collide
-	public void moveBaseElement (int x, int y) {
+	
+	public void moveBaseElement (int x, int y) {         //muove BaseElement
 		BaseElement toMove = getElement(x, y);
 		toMove.setY(toMove.getY()+32);
 	}
@@ -49,7 +49,7 @@ public class Grid {
 //		//aggiunge BaseElement a grid
 //	}
 	
-	public BaseElement[] checkRow (int i) {
+	public BaseElement[] checkRow (int i) {            //controlla riga se piena
 		BaseElement[] full = grid[i];
 		for(int j = 0; j < width; j++) {
 			if(grid[i][j] == null) {
@@ -60,19 +60,19 @@ public class Grid {
 		return full;
 	}
 	
-	public void emptyRow (int i) {
+	public void emptyRow (int i) {                  //svuota riga
 		for(int j = 0; j < width; j++) {
 			grid[i][j] = null;
 		}
 		shiftRow(i);
 	}
 	
-	public void clear() {
+	public void clear() {                      
 		grid = null;
 		grid = new BaseElement[height][width];
 	}
 	
-	public void shiftRow (int i) {
+	public void shiftRow (int i) {              //sposta intera colonna in giù 
 		for(int j = i; j>0; j--) {
 			grid[j] = grid[j-1];
 
@@ -86,7 +86,7 @@ public class Grid {
 	}
 
 	
-	public boolean isFilled (int x, int y) {
+	public boolean isFilled (int x, int y) {                    //verifica che x, y in grid sia pieno
 		if(x >=0 && y >= 0 && y<height && x < width) {
 			return grid[y][x] != null;
 		} else {

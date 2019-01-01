@@ -20,7 +20,7 @@ import tetris.resources.Resource;
  */
 public class AudioResource extends Resource {
 	/**
-	 * MediaPlayer dell'audio, ovvero la classe che permetterà di
+	 * MediaPlayer dell'audio, ovvero la classe che permetterÃ  di
 	 * far partire il suono
 	 */
 	private MediaPlayer mediaPlayer;
@@ -68,6 +68,7 @@ public class AudioResource extends Resource {
 	 * Metodo per far partire la riporduzione dell'audio.
 	 */
 	public void play() {
+		mediaPlayer.seek(Duration.ZERO);
 		mediaPlayer.play();
 	}
 	
@@ -80,7 +81,7 @@ public class AudioResource extends Resource {
 	
 	/**
 	 * Metodo per inserire un loop, alla fine dell'audio viene
-	 * "lanciato" un evento, e l'osservatore fà partire la funzione
+	 * "lanciato" un evento, e l'osservatore fÃ  partire la funzione
 	 * ogni volta che osserva l'evento lanciato.
 	 */
 	public void loop() {
@@ -89,7 +90,7 @@ public class AudioResource extends Resource {
 	        public void run() {
 	        	// Reimposta il momento di suono a zero
 	        	mediaPlayer.seek(Duration.ZERO);
-	        	// Fà ripartire l'audio
+	        	// FÃ  ripartire l'audio
 	        	mediaPlayer.play();
 	        }
 	    }); 
@@ -109,10 +110,10 @@ public class AudioResource extends Resource {
 	}
 	
 	/**
-	 * Metodo per impostare la velocità con cui il brano viene
+	 * Metodo per impostare la velocitÃ  con cui il brano viene
 	 * riprodotto.
 	 * 
-	 * @param d Velocità di riproduzione, compreso tra [0.0, 8.0]
+	 * @param d VelocitÃ  di riproduzione, compreso tra [0.0, 8.0]
 	 */
 	public void setFeedRate(double d) {
 		if(d > 8.0) {

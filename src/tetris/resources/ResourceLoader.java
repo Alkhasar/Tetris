@@ -49,7 +49,11 @@ public class ResourceLoader {
 		// Ripetere per ogni risorsa da caricare
 
 		// Caricamento Audio
+
 		this.paths.add(new String[]{"myAudio", "./assets/audio/Tetris.wav", "audio"}); 								
+		this.paths.add(new String[]{"click", "./assets/audio/click.mp3", "audio", "32", "32"});
+		this.paths.add(new String[]{"hover", "./assets/audio/hover.mp3", "audio", "32", "32"});
+
 		
 		// Caricamento immagini
 		this.paths.add(new String[]{"myWallpaper", "./assets/img/Game_Wallpaper.png","img","700","700"});
