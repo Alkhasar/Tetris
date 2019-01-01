@@ -8,6 +8,7 @@ package tetris.tetrisScene;
 
 // Java Imports
 import javafx.scene.Group;
+import javafx.scene.effect.Bloom;
 import javafx.scene.input.KeyEvent;
 import java.util.ArrayList;
 
@@ -54,8 +55,38 @@ public class Menu extends TetrisScene {
 		// Immagine di sfondo
 		Image wallpaper = new Image((ImageResource) Tetris.getResourceLoader().getResource("MenuWallpaper")); // (ImageResource) Tetris.getResourceLoader().getResource("MenuWallpaper");
 		
+		// Logo
+		Image logo = new Image(100, 50, (ImageResource) Tetris.getResourceLoader().getResource("logo"));
+		
+		// Aggiunta dell'effetto bloom al logo
+		Bloom effect = new Bloom();
+		logo.getImage().setEffect(effect);
+		Runnable logoFx = new Runnable() {
+			
+			double bloom = 0;
+			double k = 0.01;
+			
+			@Override
+			public void run() {
+				
+			
+				effect.setThreshold(bloom);
+				
+				if(bloom > 1.0) {
+					k = -0.01;
+				}else if(bloom < 0.15) {
+					k = 0.01;
+				}
+				
+				bloom += k;
+				
+			}
+		};
+		logo.setFx(logoFx);
+		
+		
 		// Pulsante gioca
-		Button playButton = new Button(200, 100, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton3"), new Runnable() {
+		Button playButton = new Button(200, 300, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton3"), new Runnable() {
 			
 			@Override
 			public void run() {
@@ -65,7 +96,7 @@ public class Menu extends TetrisScene {
 		});
 		
 		// Pulsante opzioni
-		Button optionsButton = new Button(200, 300, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton4"), new Runnable() {
+		Button optionsButton = new Button(200, 400, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton4"), new Runnable() {
 			
 			@Override
 			public void run() {
@@ -90,12 +121,14 @@ public class Menu extends TetrisScene {
 		staticNodes.getChildren().add(playButton.getButtonImage());
 		staticNodes.getChildren().add(optionsButton.getButtonImage());
 		staticNodes.getChildren().add(leaderboardButton.getButtonImage());
+		staticNodes.getChildren().add(logo.getImage());
 		
 		// Aggiungiamo tutti gli sprite all'array per tenerne traccia
 		sprites.add(wallpaper);
 		sprites.add(playButton);
 		sprites.add(optionsButton);
 		sprites.add(leaderboardButton);
+		sprites.add(logo);
 		
 		//Aggiunta dei nodi statici e dinamici a ROOT
 		ROOT.getChildren().add(staticNodes);

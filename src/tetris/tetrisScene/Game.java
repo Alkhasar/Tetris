@@ -7,7 +7,6 @@
 package tetris.tetrisScene;
 
 
-
 import java.util.ArrayList;
 // Java Imports
 import java.util.Random;
@@ -26,6 +25,7 @@ import tetris.entities.Button;
 import tetris.entities.Grid;
 import tetris.entities.Image;
 import tetris.entities.Sprite;
+import tetris.entities.TText;
 import tetris.entities.Tetramino;
 
 /**
@@ -154,8 +154,9 @@ public class Game extends TetrisScene {
 				
 			@Override
 			public void run() {
+
+				music.play();
 				Tetris.setScene("LeaderBoard");
-					
 				}
 			} );
 		
@@ -174,7 +175,7 @@ public class Game extends TetrisScene {
 		playerName.setLayoutY(400);
 		
 		// Creazione del pulsante ritorno al menu
-		Button returnToMenu = new Button(275, 325,(SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton"),new Runnable()  {
+		Button returnToMenu = new Button(275, 325,(SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton10"),new Runnable()  {
 		// definiamo il nostro runnable, in pratica diciamo cosa deve fare il pulsante	
 			@Override
 			public void run() {
@@ -279,7 +280,10 @@ public class Game extends TetrisScene {
 	@Override
 	public void loop(long now) {
 		if(!(tetramino.isGameOver())) {
-			if((now - last) > t/((rows)/10+1)) {
+
+			System.out.println((now - last) + " - " + t/(Math.round((1-Math.pow(2.71, -(rows+1))))));
+			if((now - last) > t/(Math.round((1-Math.pow(2.71, -(rows+1)))))) {
+
 				last = now;
 				tetramino.moveTetramino(0, 1);
 			} else {

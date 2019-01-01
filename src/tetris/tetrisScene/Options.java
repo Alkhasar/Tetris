@@ -23,6 +23,7 @@ import tetris.resources.SpriteSheetResource;
 
 /**
  * @author Franco
+ * @author Stefan
  *
  */
 public class Options extends TetrisScene {

@@ -49,10 +49,11 @@ public class ResourceLoader {
 		// Ripetere per ogni risorsa da caricare
 
 		// Caricamento Audio
-		this.paths.add(new String[]{"myAudio", "./assets/audio/Tetris.wav", "audio", "32", "32"}); 								
+		this.paths.add(new String[]{"myAudio", "./assets/audio/Tetris.wav", "audio"}); 								
 		
 		// Caricamento immagini
 		this.paths.add(new String[]{"myWallpaper", "./assets/img/Game_Wallpaper.png","img","700","700"});
+		this.paths.add(new String[]{"logo", "./assets/img/logo.png", "img", "500", "200"});
 		this.paths.add(new String[]{"myImage", "./assets/img/Base_Elements.png", "img", "224", "32"});
 		this.paths.add(new String[]{"MenuWallpaper", "./assets/img/Menu_Wallpaper.png","img","700","700"});
 		this.paths.add(new String[]{"OptionsWallpaper", "./assets/img/Options_Wallpaper.png","img","700","700"});
