@@ -49,8 +49,6 @@ public class Options extends TetrisScene {
 	 */
 	private ArrayList<Sprite> sprites = new ArrayList<>();  
 	
-	
-	
 	/**
 	 * Variabile per tenere traccia del volume corrente
 	 */

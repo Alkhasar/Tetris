@@ -1,21 +1,18 @@
 /**
+ * Classe baseElement
  * 
+ * Classe usata alla base del tetramino.
  */
 package tetris.entities;
 
 // Java Imports
 import javafx.scene.canvas.Canvas;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
+
 // Project imports
-import tetris.resources.Resource;
 import tetris.resources.SpriteSheetResource;
 import tetris.resources.ImageResource;
 
-/**
- * @author Franco Mostardi
- *
- */
+
 public class BaseElement extends Sprite {
 	
 	/**
@@ -88,6 +85,9 @@ public class BaseElement extends Sprite {
 		return ((ImageResource) getTexture()).getImageCanvas();
 	}
 	
+	/**
+	 * Metodo per cambiare la coordinata relativa x con quella y
+	 */
 	public void swapRelCoordinates() {
 		int temp = getRelX();
 		setRelX(getRelY());

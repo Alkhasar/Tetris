@@ -11,10 +11,6 @@ package tetris.entities;
 import tetris.resources.ImageResource;
 import tetris.resources.Resource;
 
-/**
- * @author Franco Mostardi
- *
- */
 public abstract class Sprite {
 	
 	/**

@@ -7,12 +7,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import tetris.resources.Resource;
 
-/**
- * @author stefan
- *
- */
 public class TText extends Sprite {
 	
+	/**
+	 * Variabile contente il testo da disegnare a schermo
+	 */
 	private Text drawnText = new Text();
 	
 	/**
@@ -35,22 +34,34 @@ public class TText extends Sprite {
 					);		
 	}
 	
+	/**
+	 * Setter per il testo
+	 * 
+	 * @param newText
+	 */
 	public void setnewText(String newText){
 		drawnText.setText(newText);				
 	};
 
-	
+	/**
+	 * Override di getTexture per evitare errori
+	 */
 	@Override
 	public Resource getTexture(){
-	return null;	
+		return null;	
 	};
 	
+	/**
+	 * Getter per il test
+	 * 
+	 * @return il testo contenuto
+	 */
 	public Text getText(){
 		return drawnText;	
 		};
 	
 	/**
-	 * Setter per la posizione x iniziale del pulsante
+	 * Setter per la posizione x iniziale del testo
 	 * 
 	 * @param coordinata x
 	 */
@@ -61,7 +72,7 @@ public class TText extends Sprite {
 	}
 	
 	/**
-	 * Setter per la posizione y iniziale del pulsante
+	 * Setter per la posizione y iniziale del testo
 	 * 
 	 * @param coordinata y
 	 */

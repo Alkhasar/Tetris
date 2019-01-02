@@ -1,9 +1,5 @@
 package tetris.entities;
 
-import tetris.main.Tetris;
-import tetris.resources.ImageResource;
-import tetris.tetrisScene.Game;
-
 public class Grid {
 
 	private static Grid INSTANCE;  
@@ -43,11 +39,6 @@ public class Grid {
 		BaseElement toMove = getElement(x, y);
 		toMove.setY(toMove.getY()+32);
 	}
-	
-//	public void setTetramino (Tetramino t) {
-//		currentTetramino = t;
-//		//aggiunge BaseElement a grid
-//	}
 	
 	public BaseElement[] checkRow (int i) {            //controlla riga se piena
 		BaseElement[] full = grid[i];

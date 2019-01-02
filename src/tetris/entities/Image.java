@@ -5,12 +5,7 @@ package tetris.entities;
 
 import javafx.scene.canvas.Canvas;
 import tetris.resources.ImageResource;
-import tetris.resources.Resource;
 
-/**
- * @author Franco Mostardi
- *
- */
 public class Image extends Sprite {
 
 	/**

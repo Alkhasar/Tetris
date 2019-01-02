@@ -15,14 +15,13 @@ import tetris.main.Tetris;
 // Project Imports
 import tetris.resources.SpriteSheetResource;
 import tetris.resources.AudioResource;
-/**
- * @author Stefan 
- *
- */
+
 public class Button extends Sprite {
 	
+	/**
+	 *  Risorse audio del pulsante
+	 */
 	private AudioResource clickk;
-	
 	private AudioResource hover;
 
 	/**
