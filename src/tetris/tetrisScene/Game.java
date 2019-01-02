@@ -54,6 +54,12 @@ public class Game extends TetrisScene {
 	 */
 	private Grid grid = Grid.getInstance(10, 20);
 	
+	/*
+	 * variabili di testo che indica il numero di righe completate
+	 */
+	private TText score = new TText(650, 250, "0", 35);
+	private TText lines = new TText(525, 250, "Righe", 35);
+	
 	/**
 	 * Oggetto tetramino usato nel gioco
 	 */
@@ -228,13 +234,23 @@ public class Game extends TetrisScene {
 		pauseNodes.setVisible(false);
 		scoreNodes.setVisible(false);
 		
+		// Aggiunta del testo per lo score e il punteggio
+		staticNodes.getChildren().add(score.getText());
+		staticNodes.getChildren().add(lines.getText());
+		
 		// Aggiunta dei nodi statici e dinamici a ROOT
 		ROOT.getChildren().add(dynamicNodes);
 		ROOT.getChildren().add(staticNodes);
 		ROOT.getChildren().add(pauseNodes);
 		ROOT.getChildren().add(scoreNodes);
 	}
-
+	/**
+	 * Metodo per l'aggiornamento dello score
+	 */
+	private void updateScore()  {
+		score.setnewText(Integer.toString(rows));
+	}
+	
 	/**
 	 * Inizializzatore del singleton
 	 * 
@@ -280,9 +296,7 @@ public class Game extends TetrisScene {
 	@Override
 	public void loop(long now) {
 		if(!(tetramino.isGameOver())) {
-
-			System.out.println((now - last) + " - " + t/(Math.round((1-Math.pow(2.71, -(rows+1))))));
-			if((now - last) > t/(Math.round((1-Math.pow(2.71, -(rows+1)))))) {
+			if((now - last) >  t/(Math.round(((Options) Options.getInstance()).getDifficulty()*Math.log(rows+2)))) {
 
 				last = now;
 				tetramino.moveTetramino(0, 1);
@@ -320,8 +334,9 @@ public class Game extends TetrisScene {
 							sprites.remove(baseElement);
 						}
 						rows++;
+						updateScore();
 						grid.emptyRow(y);
-						music.setFeedRate(music.getCurrentrate()+0.03);
+						//music.setFeedRate(music.getCurrentrate()+0.03);
 					}
 				}
 			}
@@ -358,6 +373,7 @@ public class Game extends TetrisScene {
 		music.stop();
 		music.setFeedRate(1.0);
 		music = null;
+		updateScore();
 		
 		// Interruzione del loop corrente per sicurezza
 		Tetris.getSceneHandler().stopCurrentLoop();

@@ -50,8 +50,11 @@ public class Button extends Sprite {
 		setX(x);
 		setY(y);
 		
-	        clickk = (AudioResource) Tetris.getResourceLoader().getResource("click");
+	    clickk = (AudioResource) Tetris.getResourceLoader().getResource("click");
 		hover = (AudioResource) Tetris.getResourceLoader().getResource("hover");
+		
+		clickk.setVolume(0.4);
+		hover.setVolume(0.4);
 		
 		// chiama il runnable che farà eseguire un comando alla funzione
 		ButtonImage.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {

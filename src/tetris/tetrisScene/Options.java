@@ -16,6 +16,7 @@ import tetris.entities.Button;
 import tetris.entities.TText;
 import tetris.entities.Image;
 import tetris.entities.Sprite;
+
 // Project Imports
 import tetris.main.Tetris;
 import tetris.resources.ImageResource;
@@ -39,9 +40,16 @@ public class Options extends TetrisScene {
 	private final Group staticNodes = new Group();
 	
 	/**
+	 * Gruppo nel quale saranno contenuti gli elementi di grafica da mostrare all pressione di regole
+	 */
+	private final Group ruleNodes = new Group();
+	
+	/**
 	 * ArrayList per tenere traccia degli oggetti da renderizare nella scena.
 	 */
 	private ArrayList<Sprite> sprites = new ArrayList<>();  
+	
+	
 	
 	/**
 	 * Variabile per tenere traccia del volume corrente
@@ -52,8 +60,6 @@ public class Options extends TetrisScene {
 	 * Variabile per tenere traccia della defficoltà impostata
 	 */
 	private int difficulty = 2;
-	
-	private String DifficultyText = "Normale";
 	
 	/**
 	 * Costruttore privato del menu, verrï¿½ eseguito uno volta sola.
@@ -67,8 +73,19 @@ public class Options extends TetrisScene {
 		TText Title = new TText(150, 50, "IMPOSTAZIONI", 50);
 		TText VolumeValue = new TText(300,330,"Volume: " + getInt(getVolume()*100) + "%",35);
 		TText Volume = new TText(190,295,"REGOLAZIONE AUDIO",35);
-		TText DifficultyValue = new TText(300,180, tellDifficulty(difficulty, DifficultyText) ,35);
+		TText DifficultyValue = new TText(300,180, tellDifficulty(difficulty) ,35);
 		TText Difficulty = new TText(190,145,"DIFFICOLTA' GIOCO",35);
+		TText Rules = new TText(10,30,"Regole Tetris\r\n"
+				+"\r\n"
+				+"Lo scopo de gioco è completare più\nlinee orizzontali possibili di tetramini\nsenza toccare l’estremo"
+				+ " superiore della\nschermata di gioco.\nOgni linea completata conferisce 10 punti\ned aumenta la velocità"
+				+ " di discesa del pezzo\nsuccessivo.\nÈ possibile regolare la difficoltà iniziale dal\nmenù opzioni.\r\n"
+				+"Comandi:\r\n"
+				+"Frecce destra/sinistra - movimenti orizzontali\r\n"
+				+"Freccia in giù - accelerazione caduta \r\n"
+				+"Freccia in sù - ruota tetramino \r\n"
+				+"Esc - menù di pausa\r\n" 
+				+"Premi Esc per tornare alle opzioni...",25);
 		 		
 		// Pulsante per diminuire la difficoltÃ 
 		Button difficultyButtonMinus = new Button(200, 150, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton12"), new Runnable() {
@@ -77,7 +94,7 @@ public class Options extends TetrisScene {
 			public void run() {
 				// DIFFICOLTA'
 				setDifficulty(getDifficulty()-1);
-				DifficultyValue.setnewText(tellDifficulty(getDifficulty(), DifficultyText));
+				DifficultyValue.setnewText(tellDifficulty(getDifficulty()));
 			}
 		});
 				
@@ -88,7 +105,7 @@ public class Options extends TetrisScene {
 			public void run() {				
 				// DIFFICOLTA'
 				setDifficulty(getDifficulty()+1);
-				DifficultyValue.setnewText(tellDifficulty(getDifficulty(), DifficultyText));		
+				DifficultyValue.setnewText(tellDifficulty(getDifficulty()));		
 			}
 		});
 						
@@ -119,10 +136,10 @@ public class Options extends TetrisScene {
 			
 			@Override
 			public void run() {
-				// VISUALIZZAZIONE DELLE REGOLE
-				
+				staticNodes.setVisible(false);
+				ruleNodes.setVisible(true);
 			}
-		}); 
+		});
 		
 		// Pulsante menu
 		Button menuButton = new Button(200, 560, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton9"), new Runnable() {
@@ -133,12 +150,6 @@ public class Options extends TetrisScene {
 				
 			}
 		}); 
-		
-		
-		
-		
-		
-		
 		
 		// Aggiunte degli elementi a staticnodes
 		staticNodes.getChildren().add(wallpaper.getImage());
@@ -157,7 +168,13 @@ public class Options extends TetrisScene {
 		sprites.add(volumeButtonMinus);
 		sprites.add(rulesButton);
 		sprites.add(menuButton);
-				
+		
+		// Aggiunta opzioni
+		ruleNodes.getChildren().add(Rules.getText());
+		
+		// Rule nodes invisible
+		ruleNodes.setVisible(false);
+		
 		// Aggiunta di tutti i testi 
 		staticNodes.getChildren().add(Difficulty.getText());
 		staticNodes.getChildren().add(DifficultyValue.getText());
@@ -166,7 +183,8 @@ public class Options extends TetrisScene {
 		staticNodes.getChildren().add(Volume.getText());
 		
 		// Aggiunta di static nodes a root
-		ROOT.getChildren().add(staticNodes);		
+		ROOT.getChildren().add(staticNodes);	
+		ROOT.getChildren().add(ruleNodes);
 	}
 
 	/**
@@ -181,7 +199,7 @@ public class Options extends TetrisScene {
 	}
 	
 	/** 
-	 * Codice iniziale per la preparazione del menu.
+	 * Codice iniziale per la preparazione delle opzioni.
 	 */
 	@Override
 	public void init() {
@@ -202,7 +220,17 @@ public class Options extends TetrisScene {
 	 * Gestione dei tasti
 	 */
 	@Override
-	public void handle(KeyEvent event) {}
+	public void handle(KeyEvent event) {
+		switch (event.getCode()) {
+		case ESCAPE:
+			if (!(staticNodes.isVisible())) {
+				staticNodes.setVisible(true);
+				ruleNodes.setVisible(false);
+			}
+		default:
+			break;
+	}
+	}
 	
 	/**
 	 * Getter per il volume corrente
@@ -254,20 +282,24 @@ public class Options extends TetrisScene {
 	 * @param Dif
 	 * @return
 	 */
-	private String tellDifficulty(int d, String Dif) {	
-		if(d==2) {
-			Dif="Normale";			
-		}
-		if(d==1) {
-			Dif="Facile";
-		}
-		if(d==3){
-			Dif="Estremo";
-		}		
-		return Dif;
+	private String tellDifficulty(int d) {	
+		String txt = "";
+		switch(d) {
+			case 1:
+				txt =  "Facile";		
+				break;
+			case 2:
+				txt = "Normale";
+				break;
+			case 3:	
+				txt =  "Estremo";
+				break;
+		}	
+		return txt;
 	}
 	
-	/** Approssima un valore con la virgola in un intero
+	/** 
+	 * Approssima un valore con la virgola in un intero
 	 * 
 	 * @param d
 	 * @return
