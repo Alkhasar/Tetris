@@ -13,11 +13,6 @@ import javafx.util.Duration;
 //Same Package imports
 import tetris.resources.Resource;
 
-
-/**
- * @author Franco
- *
- */
 public class AudioResource extends Resource {
 	/**
 	 * MediaPlayer dell'audio, ovvero la classe che permetterà di
@@ -31,7 +26,7 @@ public class AudioResource extends Resource {
 	private final Media sound;
 	
 	/**
-	 * Rate corrente
+	 * Velocit� corrente
 	 */
 	private double currentRate = 1.0;
 	
@@ -88,10 +83,8 @@ public class AudioResource extends Resource {
 		mediaPlayer.setOnEndOfMedia(new Runnable() {
 	        @Override
 	        public void run() {
-	        	// Reimposta il momento di suono a zero
-	        	mediaPlayer.seek(Duration.ZERO);
-	        	// Fà ripartire l'audio
-	        	mediaPlayer.play();
+	        	//Fa ripartire la musica
+	        	play();
 	        }
 	    }); 
 	}

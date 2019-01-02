@@ -15,11 +15,6 @@ import javafx.scene.image.Image;
 //Same Package imports
 import tetris.resources.Resource;
 
-
-/**
- * @author Franco
- *
- */
 public class ImageResource extends Resource {
 	
 	/**

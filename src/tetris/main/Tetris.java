@@ -10,21 +10,16 @@ package tetris.main;
 
 //Java Imports
 import javafx.application.Application;
-import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import tetris.resources.ResourceLoader;
-import tetris.tetrisScene.LeaderBoard;
+
 //Project Imports
 import tetris.tetrisScene.SceneHandler;
 import tetris.tetrisScene.TetrisScene;
+import tetris.resources.ResourceLoader;
+import tetris.tetrisScene.LeaderBoard;
 
-/**
- * @author Franco
- *
- */
 public class Tetris extends Application {
 	
 	// Private Parameters

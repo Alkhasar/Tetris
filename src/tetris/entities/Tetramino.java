@@ -3,16 +3,14 @@
  */
 package tetris.entities;
 
+// Java Imports
 import java.util.ArrayList;
 import java.util.Random;
 
+// Project imports
 import tetris.main.Tetris;
 import tetris.resources.SpriteSheetResource;
 
-/**
- * @author Marco Pellegrino
- *
- */
 public class Tetramino {
 	
 	/**
@@ -54,7 +52,6 @@ public class Tetramino {
 	 * Lista contenente tutti gli elementi base del tetramino corrente
 	 */
 	private ArrayList<BaseElement> currentTetramino = new ArrayList<>();
-	
 	
 	/**
 	 * Enum per tenere traccia del tipo di collisione 
@@ -205,9 +202,9 @@ public class Tetramino {
 					}
 				}
 			} else if(currentType == 6) {
-				for (BaseElement baseElement : currentTetramino) {
-					baseElement.swapRelCoordinates();
-				}
+					for (BaseElement baseElement : currentTetramino) {
+						baseElement.swapRelCoordinates();
+					}
 			}
 	}
 	
@@ -270,7 +267,6 @@ public class Tetramino {
 	 */
 	public void addToGrid() {
 		for(BaseElement baseElement : currentTetramino){
-			System.out.println("TETR: "+ baseElement);
 			grid.insertElement(baseElement, ((baseElement.getX()-190)/32), ((baseElement.getY()-20)/32));		
 		}
 		currentTetramino.clear();

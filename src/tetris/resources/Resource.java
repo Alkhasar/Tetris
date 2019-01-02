@@ -9,10 +9,6 @@ package tetris.resources;
 // Java Imports
 import java.io.File;
 
-/**
- * @author Franco
- *
- */
 public abstract class Resource {
 	
 	/**

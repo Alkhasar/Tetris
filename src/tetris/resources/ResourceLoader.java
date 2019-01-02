@@ -13,10 +13,6 @@ import java.util.Hashtable;
 //Same Package imports
 import tetris.resources.Resource;
 
-/**
- * @author Franco
- *
- */
 public class ResourceLoader {
 	
 	/**

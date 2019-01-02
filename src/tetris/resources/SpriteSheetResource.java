@@ -7,27 +7,14 @@ package tetris.resources;
 
 // Java Imports
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-
-import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
-import tetris.main.Tetris;
-
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
-/**
- * @author Franco Mostardi
- *
- */
 public class SpriteSheetResource extends Resource {
 	
 	/**
@@ -74,7 +61,7 @@ public class SpriteSheetResource extends Resource {
 		// Ritaglio dello spritesheet principale in più canvas.
 		for(int y = 0; y < rows; y++) {
 			for(int x = 0; x < columns; x++) {
-				if(x+y < numberOfImg) {
+				if(x*y < numberOfImg) {
 					Canvas c = new Canvas(width, height);
 					c.getGraphicsContext2D().drawImage(this.spriteSheet, // Prende l'img e copia il rettangolo che va da
 														x * width, 		//  (x*width)px
