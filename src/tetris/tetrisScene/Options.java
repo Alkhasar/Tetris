@@ -75,17 +75,21 @@ public class Options extends TetrisScene {
 		TText Volume = new TText(190,295,"REGOLAZIONE AUDIO",35);
 		TText DifficultyValue = new TText(300,180, tellDifficulty(difficulty) ,35);
 		TText Difficulty = new TText(190,145,"DIFFICOLTA' GIOCO",35);
-		TText Rules = new TText(10,30,"Regole Tetris\r\n"
-				+"\r\n"
+		TText Rules = new TText(10,30,
+				 "          REGOLE SCRITTE SULLA PIETRA\r\n"
+				+"--------------------------------------------------------------------------\r\n"
 				+"Lo scopo de gioco è completare più\nlinee orizzontali possibili di tetramini\nsenza toccare l’estremo"
-				+ " superiore della\nschermata di gioco.\nOgni linea completata conferisce 10 punti\ned aumenta la velocità"
-				+ " di discesa del pezzo\nsuccessivo.\nÈ possibile regolare la difficoltà iniziale dal\nmenù opzioni.\r\n"
-				+"Comandi:\r\n"
-				+"Frecce destra/sinistra - movimenti orizzontali\r\n"
-				+"Freccia in giù - accelerazione caduta \r\n"
-				+"Freccia in sù - ruota tetramino \r\n"
-				+"Esc - menù di pausa\r\n" 
-				+"Premi Esc per tornare alle opzioni...",25);
+				+" superiore della\nschermata di gioco.\nOgni linea completata conferisce 10 punti\ned aumenta la velocità"
+				+" di discesa del pezzo\nsuccessivo.\nÈ possibile regolare la difficoltà iniziale dal\nmenù opzioni! Buon divertimento!\r\n"
+				+"--------------------------------------------------------------------------\r\n"
+				+"       COMANDI DA SAPERE ASSOLUTAMENTE:\r\n"
+				+"Frecce dx-sx -->  Movimenti orizzontali\r\n"
+				+"Freccia giù ----->  Accelerazione caduta \r\n"
+				+"Freccia su ------>  Ruota tetramino \r\n"
+				+"Esc ----------------->  Menù di pausa\r\n" 
+				+"--------------------------------------------------------------------------\r\n"
+				+"Premi Esc per tornare alle opzioni..."
+				,25);
 		 		
 		// Pulsante per diminuire la difficoltÃ 
 		Button difficultyButtonMinus = new Button(200, 150, (SpriteSheetResource) Tetris.getResourceLoader().getResource("myButton12"), new Runnable() {
