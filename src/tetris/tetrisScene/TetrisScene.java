@@ -8,14 +8,11 @@
 package tetris.tetrisScene;
 
 import javafx.event.EventHandler;
+
 //Java Imports
 import javafx.scene.Group;
 import javafx.scene.input.KeyEvent;
 
-/**
- * @author Franco
- *
- */
 public abstract class TetrisScene implements EventHandler<KeyEvent> {
 	
 	/**

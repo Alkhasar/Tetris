@@ -1,5 +1,5 @@
 /**
- * Classe Tetris
+ * Classe Tetris - v1.1
  * 
  * E' la classe principale dalla quale partir� la finestra nella quale 
  * verr� eseguito il gioco. Il sistema passer� in automatico il primary

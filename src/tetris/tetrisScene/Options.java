@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 // Java Imports
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import tetris.entities.Button;
 import tetris.entities.TText;

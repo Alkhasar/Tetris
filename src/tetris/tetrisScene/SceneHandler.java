@@ -15,14 +15,9 @@ import javafx.animation.AnimationTimer;
 import tetris.tetrisScene.TetrisScene;
 import tetris.tetrisScene.Menu;
 import tetris.tetrisScene.Options;
-import tetris.main.Tetris;
 import tetris.tetrisScene.Game;
 import tetris.tetrisScene.LeaderBoard;
 
-/**
- * @author Franco
- *
- */
 public class SceneHandler {
 	 
 	/**

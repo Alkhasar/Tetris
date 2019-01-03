@@ -203,7 +203,20 @@ public class Tetramino {
 				}
 			} else if(currentType == 6) {
 					for (BaseElement baseElement : currentTetramino) {
-						baseElement.swapRelCoordinates();
+
+						collision left  = checkLeftBorderCollision(baseElement.getRelY(), baseElement.getRelX());
+						collision right  = checkRightBorderCollision(baseElement.getRelY(), baseElement.getRelX());
+						collision bottom  = checkBottomBorderCollision(baseElement.getRelY(), baseElement.getRelX());
+						collision gridCollision = checkGridCollision(baseElement.getRelY(), baseElement.getRelX());
+						if((baseElement.getY()*32) < 30  || left != collision.NONE || right != collision.NONE || bottom != collision.NONE || gridCollision != collision.NONE){
+							canRotate = false;
+						}
+					}
+
+					if(canRotate) {
+						for (BaseElement baseElement : currentTetramino) {
+							baseElement.swapRelCoordinates();
+						}
 					}
 			}
 	}

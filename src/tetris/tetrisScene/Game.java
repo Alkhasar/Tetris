@@ -57,8 +57,8 @@ public class Game extends TetrisScene {
 	/*
 	 * variabili di testo che indica il numero di righe completate
 	 */
-	private TText score = new TText(650, 250, "0", 35);
-	private TText lines = new TText(525, 250, "Righe", 35);
+	private TText score = new TText(635, 250, "0", 30);
+	private TText lines = new TText(525, 250, "Righe:", 30);
 	
 	/**
 	 * Oggetto tetramino usato nel gioco
@@ -297,16 +297,15 @@ public class Game extends TetrisScene {
 	public void loop(long now) {
 		if(!(tetramino.isGameOver())) {
 			if((now - last) >  t/(Math.round(((Options) Options.getInstance()).getDifficulty()*Math.log(rows+2)))) {
-
 				last = now;
 				tetramino.moveTetramino(0, 1);
 			} else {
 				
 				// Verifica se è necessaria la creazione di un nuovo tetramino
 				if(tetramino.isStopped()) {
-//					System.out.println(tetramino.getBaseElement().size());
+//					System.out.println(tetramino.getBaseElement().size());			//DEBUG
 					tetramino.addToGrid();
-//					grid.print();//DEBUG
+//					grid.print();													//DEBUG
 //					System.out.println("---------------------------------------");	//DEBUG
 					newTetramino(nextTetramino);
 					swapTetramino(random.nextInt(7));
@@ -336,7 +335,7 @@ public class Game extends TetrisScene {
 						rows++;
 						updateScore();
 						grid.emptyRow(y);
-						//music.setFeedRate(music.getCurrentrate()+0.03);
+						music.setFeedRate(1+0.03*(Math.round(((Options) Options.getInstance()).getDifficulty()*Math.log(rows+2))));
 					}
 				}
 			}
@@ -345,6 +344,7 @@ public class Game extends TetrisScene {
 			for (Sprite sprite : sprites) {
 				sprite.update(now);
 			}
+			
 		} else {
 			dynamicNodes.setVisible(false);
 			staticNodes.setVisible(false);
@@ -358,7 +358,6 @@ public class Game extends TetrisScene {
 	 */
 	@Override
 	public void exit() {
-		System.out.println("HIGHSCORE: " + rows);
 		
 		// Distruggere tutto cio che è creato nell'init
 		dynamicNodes.setVisible(true);
